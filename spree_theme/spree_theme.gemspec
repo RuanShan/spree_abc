@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_theme'
-  s.version     = '2.0.9.beta'
+  s.version     = '2.2.0'
   s.summary     = 'spree theme'
   s.description = 'spree theme'
   s.required_ruby_version = '>= 1.9.3'
@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.0.9.beta'
   s.add_dependency 'friendly_id'
   s.add_development_dependency 'capybara', '1.0.1'
   s.add_development_dependency 'factory_girl'

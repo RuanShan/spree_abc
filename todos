@@ -43,3 +43,5 @@ new todo
    https://shopabc-5.myshopify.com/admin/account_setup
    
 3. export/import theme 2.
+
+since there are js problem caused by select2-rails, upgrade to spree 2-2-stable

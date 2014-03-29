@@ -2,13 +2,12 @@ source 'http://rubygems.org'
 
 
 
-gem 'spree', :github => "spree/spree", :branch => "2-0-stable"
 
 group :test,:development do
   gem 'ruby-graphviz' #print checkout flow
   gem 'simplecov' #rspec using it.
   #using backend required
-  gem 'spree_auth_devise', :github => 'spree/spree_auth_devise', :branch => '2-0-stable'
+  gem 'spree_auth_devise', :github => "spree/spree_auth_devise", :branch => "2-2-stable"
   gem "mysql2"
   gem 'thin'
 end
@@ -23,7 +22,7 @@ gem "awesome_nested_set"
 
 #use paperclip instead of dragonfly,  dragonfly have no way to configure image path
 #gem "paperclip", "2.8.0" # spree require it.
-gem "responds_to_parent"
+#gem "responds_to_parent"
 # spree already contain
 #gem 'jquery-rails'
 #gem 'jquery-ui-rails'
