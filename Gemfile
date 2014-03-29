@@ -1,5 +1,5 @@
-source 'http://rubygems.org'
-#source 'http://ruby.taobao.org/'
+#source 'http://rubygems.org'
+source 'http://ruby.taobao.org/'
 
 gem 'mysql2'
 

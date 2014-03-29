@@ -98,7 +98,7 @@ PATH
       friendly_id
 
 GEM
-  remote: http://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (4.0.4)
       actionpack (= 4.0.4)
@@ -394,6 +394,7 @@ DEPENDENCIES
   rspec-rails
   ruby-hmac
   sass-rails
+  select2-rails
   spree!
   spree_alipay!
   spree_auth_devise!
