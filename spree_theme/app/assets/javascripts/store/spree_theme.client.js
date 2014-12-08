@@ -15,9 +15,9 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
   // initialize sections    
-    $($("input.fixed_container").val()).floatBar({
-        bodyWidth:980, vertical:"top",  moveOnOff:false, focusOnOff:false
-      });
+    //$($("input.fixed_container").val()).floatBar({
+    //    bodyWidth:980, vertical:"top",  moveOnOff:false, focusOnOff:false
+    //  });
     $("input.hover_effect_container").each(function(index, element){
       var children = $(element).siblings('div');
       if( children.length == 2){
