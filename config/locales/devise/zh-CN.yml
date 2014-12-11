@@ -44,9 +44,26 @@ zh-CN:
       send_instructions: 几分钟后，您将收到一封解锁帐号的邮件.
       send_paranoid_instructions: 如果您的邮箱存在于我们的数据库中，您将收到一封解锁账号的邮件.
       unlocked: 您的帐号已成功解锁，您现在已登录.
+#copy from spree_auth_devise
+    user_passwords:
+      spree_user:
+        cannot_be_blank: 您的密码不能为空.
+        no_token: 您暂时不能访问此页面。您需要通过密码重置邮件中的重置链接来访问此页面，如果您正是通过重置链接访问，请确定链接的正确性。
+        send_instructions: 几分钟内，您将收到重置密码的电子邮件.
+        updated: 您的密码已修改成功，您现在已登录.
+    user_registrations:
+      destroyed: 再见！您的帐户已成功注销。我们希望很快可以再见到您.
+      inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
+      signed_up: 欢迎您！您已注册成功.
+      updated: 帐号资料更新成功.
+    user_sessions:
+      signed_in: 登录成功.
+      signed_out: 退出成功.
+      already_signed_in: 您已经登录.
   errors:
     messages:
       already_confirmed: 已经确认，请重新登录.
+      email_is_invalid: 电子邮件地址不能为空.
       expired: 您已过期，请重新申请
       not_found: 没有找到
       not_locked: 未锁定

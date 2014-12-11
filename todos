@@ -123,6 +123,8 @@ developer todo
 3. use current site mail server before send mail.
 4. body:background
 5. search, advance search
+6. translation missing: zh-CN.devise.user_registrations.spree_user.signed_up
+7. demo.dalianshops.com 添加支付接口
 
 sales todo
 ===============================================================================================
