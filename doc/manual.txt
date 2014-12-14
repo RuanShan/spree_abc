@@ -1,0 +1,179 @@
+文档中心
+Welcome to the Spree User Guides! This documentation is intended for business owners and site administrators of Spree e-commerce sites. Everything you need to know to configure and manage your Spree store can be found here.
+如果在这个文档中您发现有任何的错误或者你想添加其他您感兴趣的内容，请联系我们 support@dalianshops.com
+
+后台使用
+==============================================================================================
+如何登录后台管理， 
+
+
+一. 产品管理
+----------------------------------------------------------------------------------------------
+产品是电子商务的核心， 开店的目的就是把它销售出去。
+在网店后台，你可以完成对产品的所有管理工作，登录后台后，点击主菜单项“产品”
+       [图片示例]
+   在这里你可以：
+      创建产品
+      删除产品
+      修改产品
+      复制产品
+      查找产品
+      选项（规格)：
+         我们用选项类型区分商店里的各个产品，当一些产品基本都属于一类产品（如T恤衫，马克杯），但是具体的特征是不一样的，如颜色，尺寸或图案。
+         对于每一个选项类型，你需要创建一个到多个选项值。如：‘尺寸’选项，可能的选项值是‘小号’，‘中号’和‘大号’
+         最最重要的：客户在产品展示页面，通过选择产品的选项值，确定了她想要购买的产品。
+      属性：
+         属性，是产品的附加描述，可以帮助客户更好的了解产品，以便做出购买决定。
+            【如图所示】
+      原型： 原型是产品的蓝图，当我们想要快速添加一组相似产品时非常有用。步骤是先创建一个基于特定选项和属性的产品原型，然后创建产品时选择对应的产品原型，这样新产品就会有产品原型所具有的选项和属性，最后你只需要填写选项和属性值就完成了。
+         想像一下，你进了一批T恤衫, 每个产品都有不同的颜色、尺寸、品牌、材质等，但是它们都是同一种类型的产品，T恤衫。这是可以使用原型的经典案例。
+         重要提示：使用原型还可以防止遗漏产品属性。
+
+
+      
+Products are at the core of any e-commerce site. Selling them is the whole reason behind opening a store in the first place.
+From your store’s Admin Interface, you can manage all of the common tasks associated with managing your products. To reach the Admin Interface, first log into your store with your admin user account, then go to the /admin directory of your site. Click the “Products” tab.
+
+    Creating Products
+    Deleting Products
+    Editing Products
+    Cloning Products
+    Options
+        Option Types are a way to help distinguish products in your store from one another. They are particularly useful when you have many products that are basically of the same general category (Tshirts or mugs, for example), but with characteristics that can vary, such as color, size, or logo.
+        For each Option Type, you will need to create one or more corresponding Option Values. If you create a “Size” Option Type, then you would need Option Values for it like “Small”, “Medium”, and “Large”.
+    Properties
+        Depending on the nature of your store and the products you sell, you may want to add “Properties” to your product descriptions. Properties are typically used to provide additional information about a product to help the customer make a better purchase decision. Here is an example of how a product’s properties would display on the customer-facing area of a store:
+    Prototypes
+        A Prototype is like a Product blueprint, useful for helping you add a group of similar new products to your store more quickly. The general procedure is that you create a Prototype which is associated with certain Option Types and Properties; then you create products based on that Prototype, and only need to fill in the values for those Option Types and Properties.
+        Imagine that you’ve just received a new shipment of picture frames from your supplier. Your new stock encompasses a variety of brands, sizes, colors, and materials, but they are all basically the same type of product. This is a prime use case for prototypes.
+    Searching Products
+
+
+二.订单管理
+----------------------------------------------------------------------------------------------
+
+订单状态
+
+进行中：表示订单已生成并且尚未被取消，包括未付款、已付款、已发货和顾客收到货还未确认等情况。 
+退单申请：表示顾客发起退单请求，商家尚未确认。 
+退单完成：表示顾客发起退单申请后商家已确认，或商家与顾客协商并退单完成。 
+已完成：表示顾客收到货并已确认。 
+无效：表示顾客订单超时未付款或已取消订单。
+
+支付状态
+
+付款成功：表示顾客选择网上支付并已通过支付宝、财付通、快钱或网银账号成功支付。 
+货到付款：表示顾客选择货到付款、商家与物流合作、物流公司代收货款、顾客自提或商家自送。 
+付款超时：表示顾客确认订单后24-48小时内未付款,系统则自动默认订单付款超时并将此订单列为无效订单。
+
+物流状态
+
+未发货：表示顾客已付款，商家尚未发货。 
+部分发货：表示顾客订单需拆分运单处理，已将部分商品发货。 
+已发货：表示顾客付款后或顾客选择货到付款，商家已将全部商品发出。 
+*已签收：表示选择网上支付和货到付款的顾客收到商品，快递返还已签收信息。
+
+
+网店管理的大多数时间实际上是处理客户订单-确认订单、库存、发货、收款、处理退货等等
+在这里我们将学会：
+  处理订单
+  手动创建订单
+  编辑订单
+  理解订单的历程
+  处理退货
+  搜索订单
+1.处理订单
+---------
+如果你的网店来了订单，无论是客户前台购买还是你在后台手动生成，你都需要遵循以下几个步骤进行处理：
+   a.确认产品库存，确认产品是否可配送.
+   b.包装产品，处理发货.
+   c.记录订单的发货信息. 对于担保交易,同时确认发货
+   第一步和第二步你需要在你的仓库或实体店身体力行的做，这个文档涵盖了第二和第三步在后台中的操作
+
+   处理发货
+   当你查看订单信息时，你会在页面的中间看到 ‘发货’ 按钮，点击，订单的物流状态变为完成。
+   最后，点击“编辑”，输入快递单号就完成了。
+
+4.客户下订单的过程
+---------------
+一个订单由客户放一个产品到购物车开始，经历几个步骤到达成功状态的过程。前一个步骤没有完成的话，是不能进行到下一步的。如：买家不提供收货地址，是不能进行付款步骤的。
+订单的历经状态如下：
+购物车： 一个或多个产品放到了购物车里。
+收货地址： 客户提供了收货地址
+支付： 客户选择了支付方式，进行支付
+完成： 客户完成了前面的所有步骤，下单成功，我们可以开始处理用户订单了。
+
+
+
+A new order is initiated when a customer places a product in their shopping cart. The order then passes through several states before it is considered complete. The order states are listed below. An order cannot continue to the next state until the previous state has been successfully satisfied. For example, an order cannot proceed to the delivery state until the customer has provided their billing and shipping address for the order during the address state.
+
+ Order States
+
+The states that an order passes through are as follows:
+
+cart - One or more products have been added to the shopping cart.
+address - The store is ready to receive the billing and shipping address information for the order.
+delivery - The store is ready to receive the shipping method for the order.
+payment - The store is ready to receive the payment information for the order.
+confirm - The order is ready for a final review by the customer before being processed.
+complete - The order has successfully completed all of the previous states and is now being processed.
+
+
+
+Much of your time administering your Spree store will be spent manipulating customer orders - processing payments, issuing refunds, confirming shipments, etc.
+
+    In these guides, you will learn how to:
+    Process orders (capture payments, record shipments)
+    Manually enter an order
+    Edit an order
+    Understand the states an order goes through
+    Process the return of an order
+    Search through your orders
+
+ Introduction
+
+Processing orders
+
+Once an order comes into your store - whether it is entered by a customer through the website frontend or you manually enter it yourself through the admin backend - it needs to be processed. That means these steps need to be taken:
+
+1.Verify that the products are, in fact, in stock and shippable.
+2.Process the payment(s) on the order.
+3.Package and ship the order.
+4.Record the shipment information on the order.
+
+Steps 1 and 3 you would obviously do physically at your stocking location(s). This guide covers how you use your Spree store to manage steps 2 and 4.
+
+支付
+Processing payments for orders is a very important component of your Spree store. The flexibility of this system allows you to add, remove, or change methods of payment to suit your needs, as well as to use almost any payment gateway you prefer.
+
+The guides in this section will also help you to understand the states an order goes through from the time the first item is added to the cart, to the time you close out the fulfillment process.
+
+配送管理
+Spree uses a very flexible and effective system to calculate shipping. This set of guides explains how Spree renders shipping options to your customers at checkout, how it calculates expected costs, and how you can configure your store with your own shipping options to fit your needs.
+
+To properly leverage Spree’s shipping system’s flexibility you must understand a few key concepts:
+
+    Shipping Categories
+    Zones
+    Calculators (to determine shipping rates)
+    Shipping Methods
+    Let’s begin by understanding what Shipping Categories are and how you can use them to differentiate products in your store.
+
+模板管理
+
+控制面板
+The Configuration page of the Admin Interface is that area of your store where you implement decisions about how you want your store to be set up. This is where you decide which shipping methods you offer, which categories you assign to product, how you want currency displayed, and dozens of other settings.
+
+The guides in this section will walk you through making all of those configuration decisions, and show you how to customize your Spree store to best fit your particular needs.
+
+    General Settings
+    Mail Methods
+    Images
+    Taxation
+    Zones, Countries, and States
+    Payment Methods
+    Taxonomies
+    Shipping Methods and Categories
+    Inventory Settings
+    Configuring Analytics
+

@@ -869,16 +869,16 @@ zh-CN:
       please_enter_reasonable_quantity: 请输入一个合理的数量
     order_processed_successfully: 您的订单已经被成功处理了
     order_state:
-      address: 地址
+      address: 账单地址
       awaiting_return: 等待退货
       canceled: 取消
       cart: 购物车
-      complete: 完成
-      confirm: 确认
-      delivery: 配送
-      payment: 支付
+      complete: 完成下单
+      confirm: 下单前确认
+      delivery: 配送地址
+      payment: 支付方式
       resumed: 重新开始
-      returned: 返回
+      returned: 收到退货
     order_summary: 订单概述
     order_sure_want_to: 您确定您想要%{event}这个订单么?
     order_total: 订单总计

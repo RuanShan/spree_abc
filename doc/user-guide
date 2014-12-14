@@ -1,115 +1,75 @@
 dalianshops 产品使用指南
 
-new store
-default-underconstruction-template
-
 如何使用dalianshops开店流程, 面向个体或企业客户
-1. 客户在线注册，立即试用七天
-2. 客户提交资料，系统审核3个工作日。
+1. 客户在线注册，免费试用30天
+2. 客户提交资料，系统审核2个工作日。
 3. 根据客户需求，完成系统定制
 4. 付费开通。
 
 一、 网店上线指南
-1.配置网店信息（名字、域名、支付和物流）, 
-2.添加菜单
+1.配置网店信息（名字、LOGO、域名、支付和物流）, 
+2.添加菜单（主菜单，产品分类）
 3.添加产品信息
 4.选择喜欢的模板
 5.发布网站。
+
 
 二、运营管理
 订单处理
 商品上线后，买家就能在网站上浏览并购买您的商品了。一旦有买家下单，系统就会通过邮件和短信通知您
 
-如何确认货件并同时确认发票
+1.process payment（支付宝/财付通 auto-capturing）
+    payment state: balance due        ->  Capture      -> paid
+    shipment state: pending                               ready  
+2.process shipment(支付宝/财付通 发送通知)
+    payment state: paid                ->  Ship         -> paid
+    shipment state: ready                               -> shipped
+    add tracking number
+
+  http://guides.spreecommerce.com/user/processing_orders.html
+  http://guides.spreecommerce.com/developer/payments.html#auto-capturing
+
+=========================================================================================================
 如何取消订单
 如何部分以及全额退款
 如何查看订单报告
 
+支付宝担保交易，
+  1.如何部分以及全额退款
+
+支付宝即时到帐
+Verify that the products are, in fact, in stock and shippable.
+Process the payment(s) on the order.
+Package and ship the order.
+Record the shipment information on the order.
+
 如果卖家需要发票，订单信息中会有相应提示，您需及时为买家提供销售发票。
 
-
 三、dalianshops有哪些特性
-1. 支持underconstruction page.
-2. 支持商品多级分类、多重分类，产品管理更科学。
-3. 自定义商品属性， 产品上架更轻松。
-4. 第三方账户登陆
-5. 
-
 五、dalianshops功能表
-1.
-2. 支持website 关闭。
-3. alipay, paypal
-4. 支持语言 en, cn.
+                                   已实现           销售前必须           以后
+    电脑+手机+微信
+    企业邮箱
+    百度收录
+    第三方账户登陆
 
-六、专业化运营
-1. open API
+    文章发布系统
 
+    产品发布系统
 
-七、帮助文档
-Welcome to the Spree User Guides! This documentation is intended for business owners and site administrators of Spree e-commerce sites. Everything you need to know to configure and manage your Spree store can be found here.
+    个性化设置
+      自定义网站栏目
 
-产品管理
-Products are at the core of any e-commerce site. Selling them is the whole reason behind opening a store in the first place.
+    订单管理
 
-From your store’s Admin Interface, you can manage all of the common tasks associated with managing your products. To reach the Admin Interface, first log into your store with your admin user account, then go to the /admin directory of your site. Click the “Products” tab.
+    搜索引擎优化
+      网站关键字和描述
+      产品、文章关键字
 
-    Creating Products
-    Deleting Products
-    Editing Products
-    Cloning Products
-    Options
-        Option Types are a way to help distinguish products in your store from one another. They are particularly useful when you have many products that are basically of the same general category (Tshirts or mugs, for example), but with characteristics that can vary, such as color, size, or logo.
-        For each Option Type, you will need to create one or more corresponding Option Values. If you create a “Size” Option Type, then you would need Option Values for it like “Small”, “Medium”, and “Large”.
-    Properties
-        Depending on the nature of your store and the products you sell, you may want to add “Properties” to your product descriptions. Properties are typically used to provide additional information about a product to help the customer make a better purchase decision. Here is an example of how a product’s properties would display on the customer-facing area of a store:
-    Prototypes
-        A Prototype is like a Product blueprint, useful for helping you add a group of similar new products to your store more quickly. The general procedure is that you create a Prototype which is associated with certain Option Types and Properties; then you create products based on that Prototype, and only need to fill in the values for those Option Types and Properties.
-        Imagine that you’ve just received a new shipment of picture frames from your supplier. Your new stock encompasses a variety of brands, sizes, colors, and materials, but they are all basically the same type of product. This is a prime use case for prototypes.
-    Searching Products
+    性能与安全
+      邮件即时提醒
+      https 访问
 
-
-订单管理
-Much of your time administering your Spree store will be spent manipulating customer orders - processing payments, issuing refunds, confirming shipments, etc.
-
-    In these guides, you will learn how to:
-    Process orders (capture payments, record shipments)
-    Manually enter an order
-    Edit an order
-    Understand the states an order goes through
-    Process the return of an order
-    Search through your orders
-
-支付
-Processing payments for orders is a very important component of your Spree store. The flexibility of this system allows you to add, remove, or change methods of payment to suit your needs, as well as to use almost any payment gateway you prefer.
-
-The guides in this section will also help you to understand the states an order goes through from the time the first item is added to the cart, to the time you close out the fulfillment process.
-
-配送管理
-Spree uses a very flexible and effective system to calculate shipping. This set of guides explains how Spree renders shipping options to your customers at checkout, how it calculates expected costs, and how you can configure your store with your own shipping options to fit your needs.
-
-To properly leverage Spree’s shipping system’s flexibility you must understand a few key concepts:
-
-    Shipping Categories
-    Zones
-    Calculators (to determine shipping rates)
-    Shipping Methods
-    Let’s begin by understanding what Shipping Categories are and how you can use them to differentiate products in your store.
-
-模板管理
-
-控制面板
-The Configuration page of the Admin Interface is that area of your store where you implement decisions about how you want your store to be set up. This is where you decide which shipping methods you offer, which categories you assign to product, how you want currency displayed, and dozens of other settings.
-
-The guides in this section will walk you through making all of those configuration decisions, and show you how to customize your Spree store to best fit your particular needs.
-
-    General Settings
-    Mail Methods
-    Images
-    Taxation
-    Zones, Countries, and States
-    Payment Methods
-    Taxonomies
-    Shipping Methods and Categories
-    Inventory Settings
-    Configuring Analytics
+    专业化运营  
+      open API
 
