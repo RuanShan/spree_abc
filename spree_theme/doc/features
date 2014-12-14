@@ -66,5 +66,8 @@ index page
         +- native -+ has native layout, can edit, release 
                    + no native layout, can not edit,  
                       theme.release_id: release id of original theme, means imported that release
-                     
-  
+
+checkout section 需要较好的用户体验，section内容由系统生成。
+ 1. 1个页面实现添加收货地址，更新用户快递费用和总费用。
+ 2. 选择付款方式后，弹出模式对话框，如图 meituan-chekcout.png
+---------------------------------------------------------------------------------  
