@@ -28,7 +28,7 @@ namespace :spree_abc do
   # there are product images, taxon icon, option_value image, post cover,
   #           ckeditor_assets, template_files
   desc "Upload images to Aliyun OSS"
-    task :product_images => :environment do
+    task :migrate_product_images => :environment do
       Spree::Site.all.each{|site|
         Spree::Site.current = site
         Spree::Image.all.each do |image|
