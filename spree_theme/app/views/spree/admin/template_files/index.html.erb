@@ -1,5 +1,5 @@
 <%= render :partial => 'sub_menu' %>
-<% content_for :page_actions do %>  
+<% content_for :page_actions do %>
   <li><%= button_link_to Spree.t("template_file.new"), new_object_url, :icon => 'plus' %></li>
 <% end %>
 
@@ -26,7 +26,7 @@
       <th class="actions"></th>
     </tr>
   </thead>
-  
+
   <tbody>
     <% @template_files.each do |page| %>
       <tr class="<%= cycle('odd', 'even') %>" id="<%= dom_id page %>">
@@ -43,6 +43,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @collection %>
 
 <% else %>
   <div class="alpha twelve columns no-objects-found">

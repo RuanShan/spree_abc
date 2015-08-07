@@ -1,5 +1,5 @@
 <%= render :partial => 'sub_menu' %>
-<% content_for :page_actions do %>  
+<% content_for :page_actions do %>
   <li><%= button_link_to Spree.t("template_text.new"), new_object_url, :icon => 'plus' %></li>
 <% end %>
 
@@ -17,7 +17,7 @@
       <th class="actions"></th>
     </tr>
   </thead>
-  
+
   <tbody>
     <% @template_texts.each do |page| %>
       <tr class="<%= cycle('odd', 'even') %>" id="<%= dom_id page %>">

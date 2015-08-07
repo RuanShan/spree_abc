@@ -2,7 +2,7 @@
 <%= render :partial=>'tabs',:locals=>{:current=>"TemplateFile"}%>
 
 <% content_for :page_actions do %>
-  <li><%= button_link_to Spree.t(:back_to_template_file_list), spree.admin_template_files_url, :icon => 'arrow-left' %></li>
+  <li><%= button_link_to Spree.t(:back_to_template_file_list), session[:return_to] || admin_template_files_url, :icon => 'arrow-left' %></li>
 <% end %>
 
 <%= render "spree/shared/error_messages", :target => @template_file %>
