@@ -59,5 +59,8 @@ SpreeAbc::Application.configure do
   config.active_support.deprecation = :notify
 
   config.eager_load = true
+
+  config.spree_multi_site.system_top_domain = 'firecart.cn'
+
 end
 Paperclip.options[:command_path] = "/usr/local/bin/"
