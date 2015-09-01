@@ -116,14 +116,14 @@ root:
       width: 100%;
     }
       #page
-      { <% font_size = @template.css(:page, html_attribute_ids: [24]) %>
-        <% if font_size == 'font_size:10px' %>
+      {
+        <% if 'font_size' == 'font_size:10px' %>
         font-size: 0.625em; /* 16px x .625 = 10px */
         line-height: 1.4em; /* 10px x 1.4 = 14px */
-        <% elsif font_size == 'font_size:12px' %>
+        <% elsif 'font_size' == 'font_size:12px' %>
         font-size: 0.75em; /* 16px x .75 = 12px */
         line-height: 1.333em; /* 12px x 1.333 = 16px */
-        <% elsif font_size == 'font_size:14px' %>
+        <% elsif 'font_size' == 'font_size:14px' %>
         font-size: 0.875em; /* 16px x .875 = 14px */
         line-height: 1.286; /* 14px x 1.286 = 18px */
         <% else %>
