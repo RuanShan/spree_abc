@@ -1,2 +1,2 @@
-gem 'spree', :github => "spree/spree", :branch => "3-1-stable"
-gem 'spree_auth_devise', :github => "spree/spree_auth_devise", :branch => "3-1-stable"
+gem 'spree', '~> 3.1' #, :github => "spree/spree", :branch => "3-1-stable"
+gem 'spree_auth_devise', '~> 3.1' #, :github => "spree/spree_auth_devise", :branch => "3-1-stable"

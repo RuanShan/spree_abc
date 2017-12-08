@@ -1,0 +1,19 @@
+<%= render :partial => 'spree/admin/shared/post_tabs', :locals => {:current => "Related Products"} %>
+
+<h3>Related Products</h3>
+
+<%= form_for [:admin, @post ] do |f| %>
+
+  <p class="field">
+    <label>
+      Choose products
+      <%= product_picker_field "post[product_ids_string]", @post.product_ids_string %>
+    </label>
+  </p>
+
+  <p class="actions">
+    <%= hidden_field_tag :redirect_to, request.url, :class => "hidden" %>
+    <%= button t("update") %>
+  </p>
+
+<% end %>

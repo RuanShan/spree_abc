@@ -46,6 +46,7 @@ module Spree
     belongs_to :store, :foreign_key => "store_id"
 
     # for now template_theme and page_layout are one to one
+    # 可能多个TemplateTheme对应一个page_layout_root
     has_one :page_layout_root, -> { where parent_id: nil }, class_name: "Spree::PageLayout"
     # partial_htmls required, initialize parent first.
     has_many :page_layouts, ->{ order('lft') }, inverse_of: :template_theme
@@ -388,8 +389,9 @@ module Spree
     # is page_layout valid to taxon, taxon is current page
     # return true if taxon is decendant of specific_taxons
     def valid_context?(selected_page_layout, taxon)
+      #这里主要是考虑执行速度，所以只处理具有上下文的页面
       #stylish only apply page_layout with context other than either.
-      if !selected_page_layout.context_either?
+      if selected_page_layout.stylish >0 #!selected_page_layout.context_either?
         # Rails.logger.debug "--------selected_page_layout=#{ selected_page_layout.title} --------"
         # page_layout.stylish_with_inherited is required, child should get stylish from accestor
         return false unless ( selected_page_layout.stylish_with_inherited == taxon.stylish_with_inherited )

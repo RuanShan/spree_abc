@@ -1,6 +1,0 @@
-require 'spree_api'
-require 'spree_backend'
-require 'spree_core'
-require 'acts_as_commentable'
-require 'spree_comments/engine'
-require 'spree_comments/permitted_attributes_for_comments'

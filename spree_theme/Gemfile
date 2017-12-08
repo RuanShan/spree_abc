@@ -22,6 +22,8 @@ gem "acts_as_tree"
 gem "awesome_nested_set"
 gem 'acts_as_commentable'
 
+gem 'acts-as-taggable-on'
+
 # spree already contain
 #gem 'jquery-rails'
 gem 'useragent'

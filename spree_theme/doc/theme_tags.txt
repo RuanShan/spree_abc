@@ -1,189 +1,189 @@
 render :partial => 'spree/orders/form', :locals => { :order_form => order_form }
-render partial: 'spree/checkout/edit'
+render :partial => 'spree/orders/form_bootstrap', :locals => { :order_form => order_form }
 render :partial => 'spree/shared/address', :locals => { :address => @order.ship_address }
-render partial: 'order_items', locals: {order: @order}
-render :partial => 'summary', :locals => { :order => @order }
-render :partial => 'spree/user_sessions/new'
-render :partial => 'spree/user_registrations/new'
-render partial: 'themes/orders/list'
 render :partial => 'spree/user_passwords/new'
-render :partial => 'themes/variants_and_option_values', :locals=>{:product=>product}
-render :partial => 'themes/sites/quick_lunch'
+render :partial => 'spree/user_registrations/new'
+render :partial => 'spree/user_registrations/new_bootstrap'
+render :partial => 'spree/user_sessions/new'
+render :partial => 'summary', :locals => { :order => @order }
 render :partial => 'themes/grouped_option_values_selector', :locals=>{:product=>product}
-render :partial => 'themes/product_options_in_slide_style', :locals=>{:product=>product}
 render :partial => 'themes/product_customizations', :locals=>{:product=>product}
 render :partial => 'themes/product_options_for_mobile', :locals=>{:product=>product}
-render :partial => 'spree/orders/form_bootstrap', :locals => { :order_form => order_form }
-render :partial => 'spree/user_registrations/new_bootstrap'
-@current_page.title
-@website.public_path('css')
-@current_page.agent_selector(request.user_agent)
-@template.section_selector
+render :partial => 'themes/product_options_in_slide_style', :locals=>{:product=>product}
+render :partial => 'themes/sites/quick_lunch'
+render :partial => 'themes/variants_and_option_values', :locals=>{:product=>product}
+render partial: 'order_items', locals: {order: @order}
+render partial: 'spree/checkout/edit'
+render partial: 'themes/orders/list'
 @client_info.to_json
-@template.css :body
-@template.css :page
-@template.css :inner
-@template.current_piece.child_selector
-@template.css(:block)
-@template.css(:inner)
-@template.css(:hover)
-@template.css(:content_layout)
-@template.css(:pagination_page)
-@template.css(:pagination_current)
-@template.css :shell
+@current_page.agent_selector(request.user_agent)
+@current_page.title
+@order.payments.valid.each do |payment|
 @template.css :a
 @template.css :a_h
-@template.css :selected
-@template.image.url
-@template.text
-@template.product_attribute( :image )
-@template.product_attribute( :description )
-@template.css :img
-@template.product_attribute( :name )
-@template.product_attribute( :thumbnail, image: i )
-@template.product_attribute( :image  )
-@template.css :cell
-@template.css :th
-@template.css :td
-@template.css :button
-@template.page_attribute(:root_name)
-@template.page_attribute( :name )
-@template.css :s_header3
-@order.payments.valid.each do |payment|
-@user.email
-@template.css(:s_input)
-@template.css(:dialog_close)
-@template.css(:dialog_content)
-@template.css(:img)
-@template.page_attribute(:description)
-@template.menu.children.each{|page|
-@template.css(:slides)
-@template.page_attribute(:icon)
-@template.post_attribute(:title)
-@template.post_attribute(:author)
-@template.post_attribute(:posted_at)
-@template.post_attribute(:body)
-@template.post_attribute(:cover)
-@template.css(:option_type)
-@template.css(:option_value)
-@template.css :s_header0
-@template.page_attribute( :tooltips )
 @template.css :block_hovered
-@template.post_attribute(:summary)
-@template.site_attribute(:name)
-@template.page_attribute(:summary)
-@template.page_attribute(:more)
-@template.page_attribute()
-@template.product_attribute( :image, image: image )
+@template.css :body
+@template.css :button
+@template.css :cell
+@template.css :img
+@template.css :inner
+@template.css :page
+@template.css :s_header0
+@template.css :s_header3
+@template.css :selected
+@template.css :shell
 @template.css :sidr
 @template.css :sidr_close
 @template.css :sidr_overlay
-@template.post_attribute( :title )
-@template.post_attribute( :file, file: i )
+@template.css :td
+@template.css :th
+@template.css(:block)
+@template.css(:content_layout)
+@template.css(:dialog_close)
+@template.css(:dialog_content)
 @template.css(:dialog_overlay)
-@template.relation_attribute(:name)
-@template.product_attribute( :icon_angle_right, {data: @template.next_product, placeholder: '>'} )
-@template.product_attribute( :icon_angle_left, {data: @template.previous_product, placeholder: '<'} )
-@template.page_attribute( :icon_angle_right, {data: @template.next_taxon, placeholder: '>'} )
-@template.page_attribute( :icon_angle_left, {data: @template.previous_taxon, placeholder: '<'} )
-@template.product_attribute()
-@template.font_awesome
 @template.css(:fa)
-meta_data_tags
-favicon_link_tag 'favicon.ico'
-javascript_include_tag 'spree/frontend/all', "data-turbolinks-track" => true
-render "spree/shared/translations"
-stylesheet_link_tag 'store/spree_theme.desktop', "data-turbolinks-track" => true
-if @current_page.is_preview
-stylesheet_link_tag 'store/spree_theme'
-else
-end
+@template.css(:hover)
+@template.css(:img)
+@template.css(:inner)
+@template.css(:option_type)
+@template.css(:option_value)
+@template.css(:pagination_current)
+@template.css(:pagination_page)
+@template.css(:s_input)
+@template.css(:slides)
+@template.current_piece.child_selector
+@template.font_awesome
+@template.image.url
+@template.menu.children.each{|page|
+@template.page_attribute( :icon_angle_left, {data: @template.previous_taxon, placeholder: '<'} )
+@template.page_attribute( :icon_angle_right, {data: @template.next_taxon, placeholder: '>'} )
+@template.page_attribute( :name )
+@template.page_attribute( :tooltips )
+@template.page_attribute()
+@template.page_attribute(:description)
+@template.page_attribute(:icon)
+@template.page_attribute(:more)
+@template.page_attribute(:root_name)
+@template.page_attribute(:summary)
+@template.post_attribute( :file, file: i )
+@template.post_attribute( :title )
+@template.post_attribute(:author)
+@template.post_attribute(:body)
+@template.post_attribute(:cover)
+@template.post_attribute(:posted_at)
+@template.post_attribute(:summary)
+@template.post_attribute(:title)
+@template.product_attribute( :description )
+@template.product_attribute( :icon_angle_left, {data: @template.previous_product, placeholder: '<'} )
+@template.product_attribute( :icon_angle_right, {data: @template.next_product, placeholder: '>'} )
+@template.product_attribute( :image  )
+@template.product_attribute( :image )
+@template.product_attribute( :image, image: image )
+@template.product_attribute( :name )
+@template.product_attribute( :thumbnail, image: i )
+@template.product_attribute()
+@template.relation_attribute(:name)
+@template.section_selector
+@template.site_attribute(:name)
+@template.text
+@user.email
+@website.public_path('css')
+"store/out-of-stock.png"
+#place holder for action /cart
+(@template.running_data_item.try(:whole_images)).each_with_index{|image,i|
+(@template.running_data_item.try(:whole_images)).each{|image|
+Spree.t('product_not_available_in_this_currency')
+Spree.t(:add_to_cart)
+Spree.t(:checkout)
+Spree.t(:dialog_title)
+Spree.t(:email)
+Spree.t(:order) + " #" + @order.number
+Spree.t(:payment_information)
+Spree.t(:shipping_address)
+Spree.t(:total)
+Spree.t(:update)
+Spree.t(:your_cart_is_empty)
+breadcrumbs(@current_page)
+button_tag  :id => 'add-to-cart-button', :type => :submit  do
+button_tag :class => 'button checkout primary', :id => 'checkout-link', :name => 'checkout' do
+button_tag :class => 'primary', :id => 'update-button' do
+content_tag :div, class: ( i==0 ? 'item active' : 'item' ) do
 csrf_meta_tags
-render "spree/shared/sync_analytics"
-if @current_page.site_design? && !@current_page.is_preview
-render "spree/shared/theme_selection_for_nondesigner"
-javascript_tag  do
-render 'layout_editor_panel'
-render "spree/shared/analytics"
-if @template.css(:font_family)== 'serif'
-if 'font_size' == 'font_size:10px'
+css_class
+css_class = cycle('even', 'odd', :name => "properties")
+display_price(product.master)
+else
 elsif 'font_size' == 'font_size:12px'
 elsif 'font_size' == 'font_size:14px'
-if @template.css :layout_fixed
-if @template.css(:content_layout).to_i > 0
-if @template.css(:content_layout).present?
-if @template.current_piece.per_page >0
-if @template.current_piece.column_count >0
-get_menu_items(@template.current_piece).each_with_index{|page, page_index|
-}
-menu_item_atom( @template.current_piece, page, page_index )
-if @template.image.present?
-if (product.images + product.variant_images).uniq.size > 1
-product.images.each do |i|
-if product.has_variants?
-product.variant_images.each do |i|
-next if product.images.include?(i)
-i.viewable.id
-if @template.current_piece.lightboxable?
-unless product.product_properties.empty?
-product.product_properties.each do |product_property|
-css_class = cycle('even', 'odd', :name => "properties")
-css_class
-product_property.property.presentation
-product_property.value
-reset_cycle('properties')
-if defined? product
-if product.price_in(current_currency) and !product.price.nil?
-if !product.has_variants?
-display_price(product.master)
-Spree.t('product_not_available_in_this_currency')
-number_field_tag :quantity, 1, :class => 'title', :min => 1
-button_tag  :id => 'add-to-cart-button', :type => :submit  do
-Spree.t(:add_to_cart)
-if @order.line_items.empty?
-Spree.t(:your_cart_is_empty)
+end
+favicon_link_tag 'favicon.ico'
+flash_messages
 form_for @order, :url => update_cart_path, :html => {:id => 'update-cart'} do |order_form|
-#place holder for action /cart
-button_tag :class => 'primary', :id => 'update-button' do
-Spree.t(:update)
-button_tag :class => 'button checkout primary', :id => 'checkout-link', :name => 'checkout' do
-Spree.t(:checkout)
-Spree.t(:total)
-Spree.t(:order) + " #" + @order.number
+get_menu_items(@template.current_piece).each_with_index{|page, page_index|
+i.viewable.id
+if !product.has_variants?
+if 'font_size' == 'font_size:10px'
+if (product.images + product.variant_images).uniq.size > 1
+if @current_page.is_preview
+if @current_page.site_design? && !@current_page.is_preview
 if @order.has_step?("address")
 if @order.has_step?("delivery")
-Spree.t(:shipping_address)
-Spree.t(:payment_information)
-render payment
+if @order.line_items.empty?
 if @order.state != 'confirm'
-Spree.t(:email)
-Spree.t(:dialog_title)
-link_to image_tag( @template.image.url , alt: @template.image.alt ),  spree.root_path
-logo
-link_to_cart
-menu = (spree_current_user ? @template.menu : @template.menu2)
-if menu.present?
-menu.children.each_with_index{|page, page_index|
+if @template.css :layout_fixed
+if @template.css(:content_layout).present?
+if @template.css(:content_layout).to_i > 0
+if @template.css(:font_family)== 'serif'
+if @template.current_piece.column_count >0
+if @template.current_piece.lightboxable?
+if @template.current_piece.per_page >0
+if @template.image.present?
 if @template.menu.present?
-link_to_if @template.current_piece.clickable?, image_tag( page.icon.url(:original), :u=>'image', :alt=>page.name), page.path
-breadcrumbs(@current_page)
-"store/out-of-stock.png"
-link_to Spree.t(:preview_theme), preview_template_theme_url( product.template_theme, :host=>product.template_theme.site.subdomain ), {:target=>'_blank'}
+if defined? product
+if menu.present?
+if post.files.any?
+if product.has_variants?
+if product.price_in(current_currency) and !product.price.nil?
+image_tag page.icon.url(:original), :u=>'image', :alt=>page.name
+javascript_include_tag 'spree/frontend/all', "data-turbolinks-track" => true
+javascript_include_tag 'spree/frontend/all.mobile', "data-turbolinks-track" => true
+javascript_tag  do
 link_to Spree.t(:install_theme_with_site), new_site_path(:template_theme_id=> product.theme_id), {:remote=>true}
-render 'map'
+link_to Spree.t(:preview_theme), preview_template_theme_url( product.template_theme, :host=>product.template_theme.site.subdomain ), {:target=>'_blank'}
+link_to image_tag( @template.image.url , alt: @template.image.alt ),  spree.root_path
+link_to_cart
+link_to_cart_badge
+link_to_if @template.current_piece.clickable?, image_tag( page.icon.url(:original), :u=>'image', :alt=>page.name), page.path
+logo
+menu = (spree_current_user ? @template.menu : @template.menu2)
+menu.children.each_with_index{|page, page_index|
+menu_item_atom( @template.current_piece, page, page_index )
+meta_data_tags
+next if product.images.include?(i)
+number_field_tag :quantity, 1, :class => 'title', :min => 1
+post.files.each do |i|
+product.images.each do |i|
+product.product_properties.each do |product_property|
+product.variant_images.each do |i|
+product_property.property.presentation
+product_property.value
+render "spree/shared/analytics"
+render "spree/shared/sync_analytics"
+render "spree/shared/theme_selection_for_nondesigner"
+render "spree/shared/translations"
+render "spree/shared/weixin_share"
 render "themes/posts/next_post_title"
 render "themes/posts/previous_post_title"
-image_tag page.icon.url(:original), :u=>'image', :alt=>page.name
-(@template.running_data_item.try(:whole_images)).each{|image|
-if post.files.any?
-post.files.each do |i|
-render "themes/sites/one_click_trial"
 render "themes/product_search"
-flash_messages
-javascript_include_tag 'spree/frontend/all.mobile', "data-turbolinks-track" => true
+render "themes/sites/one_click_trial"
+render 'layout_editor_panel'
+render 'map'
+render payment
+reset_cycle('properties')
+stylesheet_link_tag 'store/spree_theme'
+stylesheet_link_tag 'store/spree_theme.desktop', "data-turbolinks-track" => true
 stylesheet_link_tag 'store/spree_theme.mobile', "data-turbolinks-track" => true
-render "spree/shared/weixin_share"
-link_to_cart_badge
-(@template.running_data_item.try(:whole_images)).each_with_index{|image,i|
 tag :li, class: ( i==0 ? 'active' : '' ), data: { target: "#carousel-example-generic", slide_to: i }
-content_tag :div, class: ( i==0 ? 'item active' : 'item' ) do
+unless product.product_properties.empty?
+}

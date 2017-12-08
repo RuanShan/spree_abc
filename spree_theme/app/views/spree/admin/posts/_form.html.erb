@@ -1,0 +1,64 @@
+  <div data-hook="admin_product_form_taxons">
+    <%= form.field_container :title, class: ['form-group'] do %>
+      <%= form.label :title %>
+      <%= form.text_field :title, :class => 'form-control title ' %>
+      <%= error_message_on :post, :title %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+    <%= form.field_container :author, class: ['form-group'] do %>
+      <%= form.label :author %>
+      <%= form.text_field :author, :class => 'form-control' %>
+      <%= error_message_on :post, :author %>
+    <% end %>
+    </div>
+
+    <div class="col-md-6">
+    <%= form.field_container :posted_at, class: ['form-group'] do %>
+      <%= form.label :posted_at %>
+      <%= form.text_field :posted_at, value: datepicker_field_value(@post.posted_at), class: 'datepicker form-control' %>
+      <%= error_message_on :post, :posted_at %>
+    <% end %>
+    </div>
+  </div>
+<%= form.field_container :cover, class: ['form-group'] do %>
+  <%= form.label :cover, Spree.t(:icon) %>
+  <%= form.file_field :cover %>
+  <%= error_message_on :post, :cover %>
+<% end %>
+
+<%= form.field_container :body, class: ['form-group'] do %>
+  <%= form.label :body %>
+  <%= form.text_area :body, :class => 'fullwidth'  %>
+  <%= error_message_on :post, :body %>
+<% end %>
+
+<%= form.field_container :tag_list, class: ['form-group'] do %>
+  <%= form.label :tags %>
+  <%= form.text_field :tag_list, :class => 'form-control' %>
+  <%= error_message_on :post, :tag_list %>
+<% end %>
+
+<%= form.field_container :taxons, class: ['form-group'] do %>
+  <%= form.label :taxon_ids, Spree.t('taxons') %><br>
+  <%= form.hidden_field :taxon_ids, :value => @post.taxon_ids.join(','), :class => 'text fullwidth'  %>
+<% end %>
+
+<div data-hook="admin_post_form_meta_keywords">
+  <%= form.field_container :meta_keywords , class: ['form-group'] do %>
+    <%= form.label :meta_keywords, Spree.t(:meta_keywords) %>
+    <%= form.text_field :meta_keywords, :class => 'form-control' %>
+  <% end %>
+</div>
+
+<div data-hook="admin_post_form_meta_description">
+  <%= form.field_container :meta_description , class: ['form-group'] do %>
+    <%= form.label :meta_description, Spree.t(:meta_description) %>
+    <%= form.text_field :meta_description, :class => 'form-control' %>
+  <% end %>
+</div>
+
+<%= form.field_container :live, class: ['form-group'] do %>
+  <%= form.check_box :live  %> <%= form.label :live %>
+<% end %>

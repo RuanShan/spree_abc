@@ -47,6 +47,18 @@ Spree::Core::Engine.add_routes do
 
   end
 
+  namespace :admin do
+      resources :posts do
+        resources :files,   :controller => "post_files" do
+          collection do
+            post :update_positions
+          end
+        end
+        resources :products, :controller => "post_products"
+        resources :categories, :controller => "post_categories"
+      end
+  end
+  
   resources :comments, :only=>[:create] do
     collection do
       get :new_to_site
