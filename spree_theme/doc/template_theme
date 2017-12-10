@@ -13,3 +13,13 @@
 
 #关于模板的修改
 为了模板的安全，当生成模板文件以后，对于page_layout的任何修改，只在下次发布时才起作用。
+
+
+
+#模板的渲染过程
+1. 设计模板时，模板渲染过程
+根据 page_layout tree，查找每一个section, 提取default_section_piece，组装成section, 然后组装page_layout tree对应的模板原始源文件
+
+
+
+2. 模板发布后，正常浏览的渲染过程

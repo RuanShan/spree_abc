@@ -21,10 +21,23 @@ FactoryGirl.define do
     name 'tempalte release'
   end
 
-  factory :template_theme_stylish_01, class: Spree::TemplateTheme do
+  factory :stylished_template_theme, class: Spree::TemplateTheme do
     title 'template theme'
+    transient do
+      stylish 1
+    end
     after(:create) do |theme, evaluator|
-      create( :page_layout_stylish_01, template_theme: theme)
+      create( :page_layout, template_theme: theme, stylish: evaluator.stylish )
+    end
+  end
+
+  factory :template_theme_stylish_tree, class: Spree::TemplateTheme do
+    title 'template theme'
+    transient do
+      stylish '01'
+    end
+    after(:create) do |theme, evaluator|
+      create( "page_layout_stylish_#{evaluator.stylish}", template_theme: theme)
     end
   end
 
