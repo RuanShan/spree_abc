@@ -1,0 +1,10 @@
+<h1><%= t("new_site") %></h1>
+<br/>
+<%= form_for [:admin, @site]  do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <p class="form-buttons" data-hook="buttons">
+    <%= button t(:create) %>
+  </p>
+<% end %>
+<br/>
+<%= link_to t('back'), collection_url %>

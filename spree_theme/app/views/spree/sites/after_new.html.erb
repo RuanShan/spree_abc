@@ -1,0 +1,7 @@
+
+<%= t 'successfully_created',:resource=> "#{t('site')}:#{@site.name} "%> <br/>
+网站地址 <%=link_to @site.subdomain, :host=>@site.subdomain %><br/>
+管理地址 <%=link_to @site.subdomain+'/admin', 'http://'+@site.subdomain+'/admin' %>
+<% if @site.loading_sample? %>
+<%= t :loading_sample %>
+<% end %>

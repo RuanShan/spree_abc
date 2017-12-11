@@ -46,12 +46,6 @@ PATH
       acts-as-taggable-on (~> 3.1)
 
 PATH
-  remote: spree_multi_site
-  specs:
-    spree_multi_site (3.1.0)
-      spree_core
-
-PATH
   remote: spree_omniauth
   specs:
     spree_omniauth (3.1.0)
@@ -576,7 +570,6 @@ DEPENDENCIES
   spree_editor!
   spree_essential_blog!
   spree_mail_settings!
-  spree_multi_site!
   spree_omniauth!
   spree_pingpp!
   spree_theme!

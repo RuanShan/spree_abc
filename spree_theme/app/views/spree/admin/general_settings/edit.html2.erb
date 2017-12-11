@@ -1,0 +1,125 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:general_settings) %>
+<% end %>
+
+<%= form_tag admin_general_settings_path, method: :put,  enctype: 'multipart/form-data' do %>
+  <div id="preferences" data-hook>
+
+    <fieldset class="general no-border-top">
+
+      <%= fields_for :store do |f| %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group" data-hook="admin_general_setting_input_name">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group" data-hook="admin_general_setting_input_seo_title">
+              <%= f.label :seo_title %>
+              <%= f.text_field :seo_title, class: 'form-control'  %>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group" data-hook="admin_general_setting_input_meta_keywords">
+              <%= f.label :meta_keywords %>
+              <%= f.text_field :meta_keywords, class: 'form-control'  %>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group" data-hook="admin_general_setting_input_meta_description">
+              <%= f.label :meta_description %>
+              <%= f.text_area :meta_description, class: 'form-control'  %>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group" data-hook="admin_general_setting_input_url">
+              <%= f.label :url %>
+              <%= f.text_field :url, class: 'form-control'  %>
+            </div>
+          </div>
+
+          <div class="col-md-6 hide">
+            <%#-------------------------------------------------%>
+            <%# logo settings FIXME for aliyun oss              %>
+            <%#-------------------------------------------------%>
+            <div class="panel panel-default logo">
+              <div class="panel-heading">
+                <h1 class="panel-title">
+                  <%= Spree.t(:logo)%>
+                </h1>
+              </div>
+
+              <div class="panel-body ">
+                <div class="form-group">
+                  <% if @store.logo.present? %>
+                    <div data-hook="thumbnail" class="col-md-3 text-center">
+                      <%= f.label Spree.t(:thumbnail) %>
+                      <%= link_to image_tag(@store.logo.attachment.url(:mini)), @store.logo.attachment.url(:original) %>
+                    </div>
+                    <div class="col-md-9">
+                      <%= f.fields_for :logo_attributes,  @store.logo || @store.build_logo do |logo_fields| %>
+                        <%= logo_fields.label Spree.t(:attachment) %>
+                        <%= logo_fields.file_field :attachment %>
+                      <% end %>
+                    </div>
+                  <% else %>
+                      <%= f.fields_for :logo_attributes,  @store.logo || @store.build_logo do |logo_fields| %>
+                        <%= logo_fields.label Spree.t(:attachment) %>
+                        <%= logo_fields.file_field :attachment %>
+                      <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row">
+
+        <%= fields_for :site, @store.site do |f| %>
+        <div class="col-md-6">
+
+          <%#-------------------------------------------------%>
+          <%# Currency Settings                               %>
+          <%#-------------------------------------------------%>
+          <div class="panel panel-default currency">
+            <div class="panel-heading">
+              <h1 class="panel-title">
+                <%= Spree.t(:currency_settings)%>
+              </h1>
+            </div>
+
+            <div class="panel-body">
+              <div class="form-group">
+                <%= label_tag :currency, Spree.t(:choose_currency) %>
+                <%= f.select :currency, currency_options %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+
+      <div class="form-actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'save' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= button_link_to Spree.t('actions.cancel'), edit_admin_general_settings_url, icon: 'delete' %>
+      </div>
+
+    </fieldset>
+
+  </div>
+
+<% end %>
+
+<script>
+  $('#store_default_currency').select2();
+  $('#site_currency').select2();
+</script>

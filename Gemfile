@@ -47,9 +47,9 @@ gem 'spree_editor',  github: "spree/spree_editor", branch: "3-1-stable"
 # bundle config require specified branch, or warning message as below
 # Cannot use local override for spree_multi_site at ../spree_multi_site because :branch is not specified in Gemfile. Specify a branch or use `bundle config --delete` to remove the local override
 
-gem 'spree_multi_site',   path: './spree_multi_site'
 
 # Use SCSS for stylesheets,  spree_theme/spree_devise_auth required
+#gem 'spree_multi_site',   path: './spree_multi_site'
 gem "acts_as_commentable"
 gem 'useragent'
 gem 'spree_theme',   path: './spree_theme'

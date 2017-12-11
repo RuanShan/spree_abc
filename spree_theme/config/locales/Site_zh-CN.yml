@@ -1,0 +1,36 @@
+---
+zh-CN:
+  site_account: Site Account
+  site_layout: Site Layout
+  site: 网络商店
+  site_has_sample: 填充示例数据
+  load_sample:
+    test_mailer:
+      test_email:
+        load_sample: 载入示例数据
+    loading_sample: 系统正在为您加载示例产品信息, 请您登录注册使用的邮箱查询我们的邮件通知!
+  activerecord:
+    attributes:
+      spree/site:
+        name: 网店名字
+        short_name: 二级域名
+        domain: 网店域名
+        created_at: 创建时间
+        status: 状态
+        foreign_theme_id: 模板
+      spree/site/users:
+        email: 电子邮箱
+        password: 密码
+        password_confirmation: 密码
+  spree:
+    admin_store: 管理商店
+    errors:
+      messages:
+        could_not_create_site: 很抱歉，暂时无法创建商店，请稍候再试！
+        email_existing: 邮箱已经注册，请登录或更换邮箱！
+    name_store: 给您的商店取个名字
+    new_site: 创建您的商店
+    site:
+      index: 商店列表
+      new:
+    site_successfully_opened: ! 您的商店'%{site_name}'创建成功了。

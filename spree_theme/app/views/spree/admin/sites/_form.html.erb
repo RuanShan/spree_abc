@@ -1,0 +1,17 @@
+<div data-hook="admin_country_form_fields">
+  <div data-hook="name" class="form-group">
+    <%= f.label :name, Spree.t(:name) %>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
+  <div data-hook="domain" class="form-group">
+    <%= f.label :domain %>
+    <%= f.text_field :domain, :class => 'form-control' %>
+  </div>
+
+  <div data-hook="status" class="form-group">
+    <%= f.label :status %>
+
+    <%= f.select :status, Spree::Site.statuses.to_a.map { |w| [w[0].humanize, w[0]] }, {}, :class => 'select2' %>
+  </div>
+
+</div>

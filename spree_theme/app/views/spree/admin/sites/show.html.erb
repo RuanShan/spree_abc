@@ -1,0 +1,25 @@
+<h1><%= t("site_account") %></h1>        
+<br/>
+<table>
+  <tr>
+    <td><%= t("site_name") %>: &nbsp;</td>
+    <td>
+      <%= @site.name %>
+    </td>
+  </tr>  
+  <tr>
+    <td><%= t("site_domain") %>: &nbsp;</td>
+    <td>
+      <%= @site.domain %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= t("site_layout") %>: &nbsp;</td>
+    <td>
+      <%= @site.layout %>
+    </td>
+  </tr>
+</table>
+<br/>
+<%= link_to_edit @site, :class => 'edit_site' %> <%= t(:or) %>
+  <%= link_to t(:back), collection_url %>

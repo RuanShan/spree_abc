@@ -43,6 +43,8 @@ module SpreeTheme
   end
 end
 
+require 'spree_multi_site'
+
 require 'spree_core'
 require 'spree_theme/sitemap_helper'
 require 'spree_theme/engine'
