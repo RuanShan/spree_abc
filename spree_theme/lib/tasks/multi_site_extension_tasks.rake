@@ -40,7 +40,7 @@ end
 
 # task test_app call railties:install:migrations
 Rake::Task['railties:install:migrations'].enhance do
-  rename_multi_site_migrations
+  #rename_multi_site_migrations
 end
 
 #namespace :spree_multi_site do

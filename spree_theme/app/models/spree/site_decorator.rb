@@ -73,7 +73,8 @@ end
 Spree::ShippingCategory.class_eval do
   include Spree::MultiSiteSystem
   clear_validators!
-  validates :name, presence: true, uniqueness: { allow_blank: true, scope: :site_id }
+  # comment when rake test_app
+  #validates :name, presence: true, uniqueness: { allow_blank: true, scope: :site_id }
 end
 
 Spree::ShippingMethod.class_eval do

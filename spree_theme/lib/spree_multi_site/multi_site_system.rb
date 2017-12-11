@@ -12,7 +12,6 @@
 module Spree
   module MultiSiteSystem
     extend ActiveSupport::Concern
-    mattr_accessor :multi_site_context
 
     included do
       belongs_to :site
@@ -26,10 +25,12 @@ module Spree
         # enable getting taxon from site 1
         # user import theme from design site, we support import theme with taxon.
         # enable geting taxon from design site
-        if ( self == Spree::Taxon || self == Spree::Taxonomy ) && multi_site_context=='free_taxon'
+        if multi_site_context=='scoped'
+          where(:site_id =>  Spree::Site.current.id)
+        elsif ( self == Spree::Taxon || self == Spree::Taxonomy ) && multi_site_context=='free_taxon'
           where(nil)
         # first site list template themes
-      elsif ( self == Spree::Product || self == Spree::Property || Spree::Image ) && multi_site_context=='site1_themes'
+        elsif ( self == Spree::Product || self == Spree::Property || Spree::Image ) && multi_site_context=='site1_themes'
           where(nil)
         # first site list product images
         elsif multi_site_context=='site_product_images'
@@ -38,7 +39,7 @@ module Spree
         elsif multi_site_context=='admin_sites'
           where(nil)
         else
-          where(:site_id =>  Spree::Site.current.id)
+          where(nil)
         end
       }
 
@@ -48,6 +49,14 @@ module Spree
       def multi_site_context
         MultiSiteSystem.multi_site_context
       end
+    end
+
+    def self.multi_site_context
+      Thread.current[:multi_site_context]
+    end
+
+    def self.multi_site_context=(  new_multi_site_context )
+      Thread.current[:multi_site_context] = new_multi_site_context
     end
 
     def self.setup_context(  new_multi_site_context = nil)

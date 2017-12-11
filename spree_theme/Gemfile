@@ -3,6 +3,8 @@ source 'https://rubygems.org/'
 
 eval(File.read(File.dirname(__FILE__) + '/../common_spree_dependencies.rb'))
 
+#https://www.cnblogs.com/Sophiawow/p/4523026.html
+gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin]
 
 group :test,:development do
   #gem 'ruby-graphviz' #print checkout flow
