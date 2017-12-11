@@ -13,6 +13,8 @@ module Spree
   module MultiSiteSystem
     extend ActiveSupport::Concern
 
+    MultiSiteContextEnum = Struct.new( :scoped, :admin_sites, :site1_themes, :free_taxon )[0,1,2,3]
+
     included do
       belongs_to :site
       # rails 3.2.19
@@ -57,10 +59,6 @@ module Spree
 
     def self.multi_site_context=(  new_multi_site_context )
       Thread.current[:multi_site_context] = new_multi_site_context
-    end
-
-    def self.setup_context(  new_multi_site_context = nil)
-      self.multi_site_context = new_multi_site_context
     end
 
     # do block with given context

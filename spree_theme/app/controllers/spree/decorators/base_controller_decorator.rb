@@ -1,10 +1,11 @@
 #encoding: utf-8
 module Spree
     BaseController.class_eval do
+      prepend_before_action :set_multi_site_scope
       #rescue_from CanCan::AccessDenied do |exception|
       #  return spree_theme_admin_unauthorized
-      #end  
-      
+      #end
+
       #def spree_theme_admin_unauthorized
       #  Rails.logger.debug "yes, it is calling spree_theme_admin_unauthorized"
       #    if try_spree_current_user
@@ -26,9 +27,13 @@ module Spree
       #      store_location
       #      redirect_to new_admin_session_path
       #    end
-      #  end  
+      #  end
+
+      def set_multi_site_scope
+        Spree::MultiSiteSystem.multi_site_context = Spree::MultiSiteSystem::MultiSiteContextEnum.scoped
+      end
     end
-      
+
 end
 
 module Spree::Admin
