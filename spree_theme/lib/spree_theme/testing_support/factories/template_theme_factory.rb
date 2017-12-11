@@ -50,6 +50,7 @@ FactoryGirl.define do
     store
     after(:create) do |theme, evaluator|
       create(:page_layout_root, template_theme: theme)
+
     end
   end
 

@@ -7,9 +7,13 @@ module Shared
         end
       end
       # * params
-      #   * usage - may be [ruby,ehtml, css, js]
+      #   * usage - may be [css, js, ruby, ehtml, card.ehtml, home.ehtml, list.ehtml ..]
       def file_name(usage)
-        if usage.to_s == 'ehtml'
+        usage  = usage.to_s unless usage.is_a? String
+        if usage =~ /[\w]+\.ehtml/
+          name = usage.split('.').first
+          "l#{original_page_layout_root.id}#{name}.html.erb"
+        elsif usage =~ /ehtml/
           "l#{original_page_layout_root.id}.html.erb"
         else
           "l#{original_page_layout_root.id}.#{usage}"

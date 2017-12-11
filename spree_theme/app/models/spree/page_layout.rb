@@ -388,7 +388,7 @@ module Spree
         sections = Section.includes(:section_piece)
         section_hash = sections.inject({}){|h, s| h[s.id] = s; h}
         css = build_css(tree, self, section_hash)
-        htmls = build_htmls(tree,  section_hash)
+        htmls = build_htmls(tree,  section_hash, special_contexts)
         js = build_js(tree, sections)
         return htmls, css, js
       end

@@ -42,6 +42,10 @@ module Spree
     include Shared::TemplateThemePath
     #extend FriendlyId
     TerminalEnum = Struct.new( :desktop, :mobile, :pad, :tv )[0,1,2,3]
+    # 模板生成客户页面的方法
+    #   all: 编译页面内容在一个方法里，调用这个方法生成页面
+    #   show:
+    enum renderer: { renderer_all: 0, renderer_show: 1, renderer_shop: 2, renderer_none: 4 } #, _prefix: true
 
     belongs_to :store, :foreign_key => "store_id"
 
@@ -147,19 +151,16 @@ module Spree
     # 生成模板文件
     # params
     #   options:  page_only- do not create template_release record, rake task import_theme required it
-    def release( release_attributes= {},option={})
-      if option[:page_only]
-        self.current_template_release.touch #trigger define new compiled_template_theme method
-      else
-        template_release = self.template_releases.build
-        template_release.name = "just a test"
-        template_release.save!
-      end
-      self.reload # release_id shoulb be template_release.id
-      @lg = PageTag::PageGenerator.releaser( self )
-      @lg.release
+    def release( release_attributes= {},options={})
+
+      template_theme_releaser = TemplateThemeReleaser.new( self, options)
+
+      template_theme_releaser.release
+
       self.current_template_release
     end
+
+
 
 
     begin 'edit template'
@@ -184,8 +185,9 @@ module Spree
 
       # template theme contained native page layout and param values
       def original_template_theme
-        # duplicated_from || self
-        self.class.where(:page_layout_root_id=>self.page_layout_root_id).first
+
+        duplicated_from || self
+        #self.class.where(:page_layout_root_id=>self.page_layout_root_id).first
       end
 
       def duplicator
