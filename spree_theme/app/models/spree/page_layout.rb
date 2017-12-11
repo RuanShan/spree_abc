@@ -382,22 +382,31 @@ module Spree
     end
 
     begin 'section content, html, css, js'
-      def build_content()
+      def build_content( special_contexts=[] )
         tree = self.self_and_descendants.includes(:section=>[:section_piece, :full_set_nodes])
         # have to Section.all, we do not know how many section_pieces each section contained.
         sections = Section.includes(:section_piece)
         section_hash = sections.inject({}){|h, s| h[s.id] = s; h}
         css = build_css(tree, self, section_hash)
-        html = build_html(tree,  section_hash)
+        htmls = build_htmls(tree,  section_hash)
         js = build_js(tree, sections)
-        return html, css, js
+        return htmls, css, js
       end
 
       # Usage: build html, js, css for a layout
       # Params: theme_id,
       #         if passed, build css for that theme, or build css for default theme
-      def build_html(tree = [], section_hash = {})
-        build_section_html(tree, self, section_hash)
+      # 返回数组
+      def build_htmls(tree = [], section_hash = {}, special_contexts=[])
+        if special_contexts.present?
+          special_contexts.map{|special_context|
+            build_section_html(tree, self, section_hash, special_context)
+          }
+        else
+          [:any_context].map{
+            build_section_html(tree, self, section_hash)
+          }
+        end
       end
 
       def build_css(tree, node, section_hash, theme_id=0)
@@ -621,6 +630,8 @@ module Spree
     private
     # a page_layout build itself.
     def build_section_html(tree, node, section_hash, special_context = nil)
+      #
+      return '' if special_context.present? && !node.valid_context?(special_context)
       return '' unless node.is_enabled?
       subpieces = ""
       unless node.leaf?
