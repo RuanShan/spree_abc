@@ -30,7 +30,7 @@ module Spree
       #  end
 
       def set_multi_site_scope
-        Spree::MultiSiteSystem.multi_site_context = Spree::MultiSiteSystem::MultiSiteContextEnum.scoped
+        Spree::MultiSiteSystem.bind
       end
     end
 
