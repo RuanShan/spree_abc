@@ -122,7 +122,7 @@ group :test do
   gem 'with_model'
 end
 #execjs need js runtime, use nodejs of system instead.
-#gem 'therubyracer'
+gem 'puma'
 
 group :development do
   gem "spring"
