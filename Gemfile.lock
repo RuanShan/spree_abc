@@ -40,12 +40,6 @@ PATH
       spree_core
 
 PATH
-  remote: spree_essential_blog
-  specs:
-    spree_essential_blog (3.0.0)
-      acts-as-taggable-on (~> 3.1)
-
-PATH
   remote: spree_omniauth
   specs:
     spree_omniauth (3.1.0)
@@ -119,8 +113,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (3.5.0)
-      activerecord (>= 3.2, < 5)
     acts_as_commentable (4.0.2)
     acts_as_list (0.9.10)
       activerecord (>= 3.0)
@@ -568,7 +560,6 @@ DEPENDENCIES
   spree_auth_devise (~> 3.1)
   spree_china_checkout!
   spree_editor!
-  spree_essential_blog!
   spree_mail_settings!
   spree_omniauth!
   spree_pingpp!
