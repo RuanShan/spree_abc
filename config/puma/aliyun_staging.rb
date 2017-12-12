@@ -38,7 +38,7 @@ environment ENV.fetch("RAILS_ENV") { "aliyun_staging" }
 # The default is "false".
 #
 # daemonize
-# daemonize false
+daemonize true
 
 # Store the pid of the server in the file at "path".
 #
@@ -112,7 +112,7 @@ bind 'unix:///home/deploy/www/spree_abc_current/tmp/sockets/puma.socket'
 #
 # The default is "0".
 #
-# workers 2
+workers 2
 
 # Code to run immediately before the master starts workers.
 #
