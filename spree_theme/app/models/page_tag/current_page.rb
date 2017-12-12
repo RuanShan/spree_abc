@@ -14,7 +14,7 @@ module PageTag
 
     attr_accessor :page_generator,:website_tag, :template_tag, :product_tag, :post_tag
     delegate :theme, :resource, :product, :post, :to => :page_generator
-    delegate :is_preview, :to => :page_generator
+    delegate :is_preview, :released_page_path, :to => :page_generator
     delegate :design?, :to => :website_tag, :prefix=>"site"
     alias_attribute :page, :model
     alias_attribute :website, :website_tag
@@ -80,6 +80,8 @@ module PageTag
       # Rails.logger.debug "request_user_agent=#{request_user_agent}, user_agent=#{user_agent.to_s}"
       "#{( user_agent.browser=='Internet Explorer' ? 'ie' : user_agent.browser )} #{user_agent.version.to_s.to_i}".to_url
     end
+
+
   end
 
 end

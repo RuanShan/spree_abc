@@ -89,16 +89,16 @@ module PageTag
     end
 
 
-    def release( )
-      #build -> generate_assets -> serialize
-      self.build            # build ehtml, ecss, ejs
-      self.generate_assets  # generate css, js
-      self.ruby = erb.new(self.ehtml).src
-      serialize_page(:ehtml)
-      serialize_page(:css)
-      serialize_page(:js)
-      serialize_page(:ruby)
-    end
+    #def release( )
+    #  #build -> generate_assets -> serialize
+    #  self.build            # build ehtml, ecss, ejs
+    #  self.generate_assets  # generate css, js
+    #  self.ruby = erb.new(self.ehtml).src
+    #  serialize_page(:ehtml)
+    #  serialize_page(:css)
+    #  serialize_page(:js)
+    #  serialize_page(:ruby)
+    #end
 
     def renderer
       if @renderer.blank?
@@ -121,19 +121,25 @@ module PageTag
       url
     end
 
-    # *specific_attribute - ehtml,ecss, html, css
-    def serialize_page(specific_attribute)
-      specific_attribute_collection = [:css,:js,:ehtml,:ruby]
-      raise ArgumentError unless specific_attribute_collection.include?(specific_attribute)
-      page_content = send(specific_attribute)
-      if page_content.present?
-        path = self.theme.document_path
-        FileUtils.mkdir_p(path) unless File.exists?(path)
 
-        path = self.theme.document_file_path(specific_attribute)
-        open(path, 'w') do |f|  f.puts page_content; end
-      end
+    #取得模板文件路径,生成页面时使用
+    def released_page_path( )
+      self.theme.releaser.page_document_path( self.menu )
     end
+
+
+    # *specific_attribute - ehtml,ecss, html, css
+    #def serialize_page(specific_attribute)
+    #  specific_attribute_collection = [:css,:js,:ehtml,:ruby]
+    #  raise ArgumentError unless specific_attribute_collection.include?(specific_attribute)
+    #  page_content = send(specific_attribute)
+    #  if page_content.present?
+    #    path = self.theme.document_path
+    #    FileUtils.mkdir_p(path) unless File.exists?(path)
+    #    path = self.theme.document_file_path(specific_attribute)
+    #    open(path, 'w') do |f|  f.puts page_content; end
+    #  end
+    #end
 
     private
     # erb context variables

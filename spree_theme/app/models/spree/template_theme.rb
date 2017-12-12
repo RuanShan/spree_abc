@@ -36,7 +36,7 @@
 # *
 
 module Spree
-  #it is a theme of page_layout
+  #it is a theme of page_lay
   class TemplateTheme < ActiveRecord::Base
     include AssignedResource::TemplateResourceGlue
     include Shared::TemplateThemePath
@@ -44,8 +44,8 @@ module Spree
     TerminalEnum = Struct.new( :desktop, :mobile, :pad, :tv )[0,1,2,3]
     # 模板生成客户页面的方法
     #   all: 编译页面内容在一个方法里，调用这个方法生成页面
-    #   show:
-    enum renderer: { renderer_all: 0, renderer_show: 1, renderer_shop: 2, renderer_none: 4 } #, _prefix: true
+    #   page: 对应每一类页面生成一个文件，生成页面时引擎选择相应文件返回给客户
+    enum renderer: { renderer_all: 0, renderer_page: 1, renderer_none: 4 } #, _prefix: true
 
     belongs_to :store, :foreign_key => "store_id"
 
@@ -151,17 +151,16 @@ module Spree
     # 生成模板文件
     # params
     #   options:  page_only- do not create template_release record, rake task import_theme required it
-    def release( release_attributes= {},options={})
+    def release( release_attributes= {},  options={} )
 
-      template_theme_releaser = TemplateThemeReleaser.new( self, options)
-
-      template_theme_releaser.release
+      releaser(  options  ).release
 
       self.current_template_release
     end
 
-
-
+    def releaser( options={} )
+      TemplateThemeReleaser.new( self, options)
+    end
 
     begin 'edit template'
 

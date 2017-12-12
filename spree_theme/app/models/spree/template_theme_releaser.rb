@@ -12,9 +12,7 @@ module Spree
     #当前模板适用于哪些页面，即哪些上下文
     #生成模板时，序列化模板时，都需要使用
     def available_page_contexts
-      if  template_theme.renderer_show?
-        [:home, :list, :detail, :blog, :post, :search]
-      elsif  template_theme.renderer_shop?
+      if  template_theme.renderer_page?
         [:home, :list, :detail, :cart, :account, :checkout, :thanks, :signup, :password, :blog, :post, :search]
       else
         [:all]
@@ -37,6 +35,13 @@ module Spree
 
       generate_content
       template_theme.current_template_release
+    end
+
+    #取得taxon对应的模板文件路径 /home/david/www/spree_abc/public/shops/1/....
+    def page_document_path( taxon )
+      context = taxon.current_context
+      name = "#{context}.ehtml"
+      path = self.template_theme.document_file_path( name )
     end
 
     def generate_content
