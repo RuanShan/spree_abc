@@ -37,6 +37,7 @@ module Spree
       new_template_theme.store_id = Spree::Store.current.id
       new_template_theme.release_id = 0 # new copied theme should have no release
       new_template_theme.page_layout_root_id = 0
+      new_template_theme.copy_from_id = original_template_theme.id
       new_template_theme
     end
 
