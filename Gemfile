@@ -4,7 +4,7 @@ source 'https://gems.ruby-china.org'
 # Bundle edge Rails instead:
 # ruby '2.2.4'
 
-gem 'rails', '~>4.2.6'
+gem 'rails', '~>5.0'
 
 gem 'mysql2'
 
@@ -36,7 +36,7 @@ gem 'jquery-turbolinks'
 
 eval(File.read(File.dirname(__FILE__) + '/common_spree_dependencies.rb'))
 #support rich_editor
-gem 'spree_editor',  github: "spree/spree_editor", branch: "3-1-stable"
+gem 'spree_editor',  github: "spree/spree_editor", branch: "master"
 #gem 'spree_related_products', github: 'RuanShan/spree_related_products', branch: "3-1-stable"
 # gem 'sprangular',   path: './sprangular'
 
@@ -59,13 +59,12 @@ gem 'ruby-hmac' #http://ryanbigg.com/2009/07/no-such-file-to-load-hmac-sha1/
 #only specify it here, then could use ActiveMerchant::Billing::Integrations::Alipay::Helper directly
 gem 'alipay'
 #gem 'offsite_payments'
-#gem 'activemerchant_patch_for_china', github:'RuanShan/activemerchant_patch_for_china', branch:'for_offsite_payments'
 gem 'spree_alipay',   github:  "RuanShan/spree_alipay", branch: "master"
 
 gem 'coffee-rails'  #spree_china_checkout required
 gem 'spree_china_checkout',   path: './spree_china_checkout'
 #gem 'spree_essential_blog',   path: './spree_essential_blog'
-gem 'spree_pingpp',   path: './spree_pingpp'
+#gem 'spree_pingpp',   path: './spree_pingpp'
 
 
 gem 'wechat'
