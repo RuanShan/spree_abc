@@ -40,12 +40,6 @@ PATH
       spree_core
 
 PATH
-  remote: spree_essential_blog
-  specs:
-    spree_essential_blog (3.0.0)
-      acts-as-taggable-on (~> 3.1)
-
-PATH
   remote: spree_omniauth
   specs:
     spree_omniauth (3.1.0)
@@ -63,6 +57,7 @@ PATH
   remote: spree_theme
   specs:
     spree_theme (3.1.0)
+      acts-as-taggable-on
       acts_as_commentable
       font-awesome-rails
       friendly_id
@@ -119,8 +114,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (3.5.0)
-      activerecord (>= 3.2, < 5)
+    acts-as-taggable-on (4.0.0)
+      activerecord (>= 4.0)
     acts_as_commentable (4.0.2)
     acts_as_list (0.9.10)
       activerecord (>= 3.0)
@@ -309,6 +304,7 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     public_suffix (2.0.4)
+    puma (3.10.0)
     rabl (0.12.0)
       activesupport (>= 2.3.14)
     rack (1.6.4)
@@ -553,6 +549,7 @@ DEPENDENCIES
   paperclip_oss_storage!
   poltergeist (= 1.5.0)
   pry-rails
+  puma
   rails (~> 4.2.6)
   rspec-activemodel-mocks
   rspec-collection_matchers
@@ -568,7 +565,6 @@ DEPENDENCIES
   spree_auth_devise (~> 3.1)
   spree_china_checkout!
   spree_editor!
-  spree_essential_blog!
   spree_mail_settings!
   spree_omniauth!
   spree_pingpp!

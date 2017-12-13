@@ -59,7 +59,7 @@ module SpreeTheme
             @properties[:search] = params[:search]
 
             per_page = params[:per_page].to_i
-            @properties[:per_page] = per_page > 0 ? per_page : SpreeEssentialBlog::Config[:posts_per_page]
+            @properties[:per_page] = per_page > 0 ? per_page : 12
             @properties[:page] = (params[:page].to_i <= 0) ? 1 : params[:page].to_i
           end
     end

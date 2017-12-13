@@ -13,7 +13,8 @@ module Spree
     #生成模板时，序列化模板时，都需要使用
     def available_page_contexts
       if  template_theme.renderer_page?
-        [:home, :list, :detail, :cart, :account, :checkout, :thanks, :signup, :password, :blog, :post, :search]
+        #                                                                     登陆界面
+        [:home, :list, :detail, :cart, :account, :checkout, :thanks, :signup, :login, :password, :blog, :post, :search]
       else
         [:all]
       end

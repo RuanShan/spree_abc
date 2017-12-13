@@ -18,8 +18,14 @@ Spree::Store.class_eval do
     def by_domain( domain )
       current_store = if domain.is_a? String
         if domain.end_with? Spree::Site.system_top_domain
-          short_name = domain.split('.').first
-          self.find_by_code(short_name)
+          # 域名示例
+          # getstore.cn，www.getstore.cn, test.getstore.cn
+          if domain == Spree::Site.system_top_domain
+            self.god
+          else
+            short_name = domain.split('.').first
+            self.find_by_code(short_name)
+          end
         else
           self.by_url(domain).first
         end
@@ -33,7 +39,7 @@ Spree::Store.class_eval do
     # we could set default site for missing site as well.
     def default
       # Fix Spree::Store.default.persisted?
-      where( default: true ).first || new 
+      where( default: true ).first || new
     end
 
     def god

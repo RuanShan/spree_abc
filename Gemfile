@@ -64,7 +64,7 @@ gem 'spree_alipay',   github:  "RuanShan/spree_alipay", branch: "master"
 
 gem 'coffee-rails'  #spree_china_checkout required
 gem 'spree_china_checkout',   path: './spree_china_checkout'
-gem 'spree_essential_blog',   path: './spree_essential_blog'
+#gem 'spree_essential_blog',   path: './spree_essential_blog'
 gem 'spree_pingpp',   path: './spree_pingpp'
 
 
@@ -122,7 +122,7 @@ group :test do
   gem 'with_model'
 end
 #execjs need js runtime, use nodejs of system instead.
-#gem 'therubyracer'
+gem 'puma'
 
 group :development do
   gem "spring"
