@@ -134,3 +134,6 @@ group :development do
 #  gem 'capistrano-rvm', '~> 0.1.0'
 #  #gem "rails-erd"
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
