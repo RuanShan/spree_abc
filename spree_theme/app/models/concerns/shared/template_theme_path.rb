@@ -44,7 +44,7 @@ module Shared
       end
 
       def layout_path
-        document_file_path( :ruby )
+        document_file_path( 'ehtml' )
       end
 
       def document_file_path( target )
