@@ -68,7 +68,7 @@ gem 'spree_pingpp',   path: './spree_pingpp'
 
 
 gem 'wechat'
-gem 'spree_omniauth',   path: './spree_omniauth'
+#gem 'spree_omniauth',   path: './spree_omniauth'
 
 # copy from https://github.com/RuanShan/spree_flexi_variants/tree/2-1-stable
 # gem 'spree_flexi_variants',   path: './spree_flexi_variants'

@@ -1,6 +1,6 @@
 class Spree::Admin::PostProductsController < Spree::Admin::BaseController
 
-  before_filter :load_data
+  before_action :load_data
 
   def create
     position = @post.products.count

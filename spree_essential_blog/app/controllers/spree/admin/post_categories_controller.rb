@@ -1,6 +1,6 @@
 class Spree::Admin::PostCategoriesController < Spree::Admin::ResourceController
   
-  before_filter :load_data
+  before_action :load_data
 
   private
 

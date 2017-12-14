@@ -1,7 +1,7 @@
     Spree::Admin::ProductsController.class_eval do
       update.before :prepare_more_params
       create.before :prepare_more_params
-      around_filter :only=>[:create,:edit, :update, :destroy] do |controller, action_block|
+      around_action :only=>[:create,:edit, :update, :destroy] do |controller, action_block|
         Spree::MultiSiteSystem.with_context_free_taxon{
           action_block.call
         }

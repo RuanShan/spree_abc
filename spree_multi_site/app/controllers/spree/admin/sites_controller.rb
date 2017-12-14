@@ -1,7 +1,7 @@
 module Spree
   module Admin
     class SitesController< Spree::Admin::ResourceController
-      before_filter :ensure_access_allowed
+      before_action :ensure_access_allowed
       #resource_controller
       self.create.after( :create_after )
 
