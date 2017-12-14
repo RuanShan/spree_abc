@@ -1,3 +1,4 @@
+#覆盖 spree_editor 中原文件，修改 current_editor，ids 缺省值
 module Spree
   class EditorSetting < Preferences::Configuration
     preference :enabled,        :boolean, default: true
