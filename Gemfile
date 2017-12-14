@@ -27,25 +27,18 @@ gem 'uglifier', '>= 1.3.0'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-
-
 gem 'turbolinks', '~> 2.5.3'
 gem 'jquery-turbolinks'
 
-
 eval(File.read(File.dirname(__FILE__) + '/common_spree_dependencies.rb'))
 #support rich_editor
+gem 'ckeditor'
 gem 'spree_editor',  github: "spree/spree_editor", branch: "master"
 #gem 'spree_related_products', github: 'RuanShan/spree_related_products', branch: "3-1-stable"
 # gem 'sprangular',   path: './sprangular'
-
-#gem 'tinymce-rails-langs'
-#gem 'daemons'
-#gem 'delayed_job_active_record'
 #'bundle update spree_multi_site' to update gem
 # bundle config require specified branch, or warning message as below
 # Cannot use local override for spree_multi_site at ../spree_multi_site because :branch is not specified in Gemfile. Specify a branch or use `bundle config --delete` to remove the local override
-
 
 # Use SCSS for stylesheets,  spree_theme/spree_devise_auth required
 #gem 'spree_multi_site',   path: './spree_multi_site'

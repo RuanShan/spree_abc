@@ -20,11 +20,6 @@ Spree.user_class = "Spree::User"
 
 Spree::Api::Config.requires_authentication = false
 
-SpreeEditor::Config.tap do |config|
-  config.ids = "product_description taxon_description template_text_body  post_body"
-  config.current_editor = "CKEditor"
-end
-
 Rails.application.config.spree_multi_site.site_scope_required_classes_with_image_from_other_gems.concat(
   [ ['Spree::Post',:cover],['Spree::PostFile',:attachment],['Spree::TemplateFile',:attachment],
   ['Spree::StoreLogo',:attachment] ]

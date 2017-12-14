@@ -34,6 +34,7 @@ Spree::Prototype.class_eval do
   include Spree::MultiSiteSystem
 end
 
+#保存对应每个Site的配置属性
 Spree::Preference.class_eval do
   include Spree::MultiSiteSystem
 end
