@@ -4,7 +4,7 @@ module Spree
     extend FriendlyId
     friendly_id :slug_candidates, :use => :slugged
 
-    #acts_as_taggable
+    acts_as_taggable
     # for flash messages
     alias_attribute :name, :title
 

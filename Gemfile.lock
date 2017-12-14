@@ -534,6 +534,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-session_store
+  acts-as-taggable-on
   acts_as_commentable
   alipay
   autoprefixer-rails
