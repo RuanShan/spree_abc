@@ -1,35 +1,34 @@
 source 'https://gems.ruby-china.org'
 #source 'https://rubygems.org'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
 # Bundle edge Rails instead:
 # ruby '2.2.4'
 
-gem 'rails', '~>5.0'
+gem 'rails', '~>5.1'
 
 gem 'mysql2'
 
+# Use Puma as the app server
+gem 'puma', '~> 3.7'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-gem 'sass-rails', '~> 5.0'
 
 #gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the web server
-# gem 'unicorn'
-
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-#group :test, :development do
-#  gem "rspec-rails", "~> 2.0"
-#  gem "capybara"
-#end
+
+
 gem 'turbolinks', '~> 2.5.3'
 gem 'jquery-turbolinks'
 
@@ -52,6 +51,7 @@ gem 'spree_editor',  github: "spree/spree_editor", branch: "master"
 #gem 'spree_multi_site',   path: './spree_multi_site'
 gem "acts_as_commentable"
 gem 'useragent'
+gem "font-awesome-rails"
 gem 'spree_theme',   path: './spree_theme'
 
 #activemerchant_patch_for_china requried
@@ -59,9 +59,10 @@ gem 'ruby-hmac' #http://ryanbigg.com/2009/07/no-such-file-to-load-hmac-sha1/
 #only specify it here, then could use ActiveMerchant::Billing::Integrations::Alipay::Helper directly
 gem 'alipay'
 #gem 'offsite_payments'
-gem 'spree_alipay',   github:  "RuanShan/spree_alipay", branch: "master"
+#gem 'spree_alipay',   github:  "RuanShan/spree_alipay", branch: "master"
 
-gem 'coffee-rails'  #spree_china_checkout required
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.2'
 gem 'spree_china_checkout',   path: './spree_china_checkout'
 #gem 'spree_essential_blog',   path: './spree_essential_blog'
 gem 'spree_pingpp',   path: './spree_pingpp'
@@ -120,19 +121,14 @@ group :test do
   gem 'timecop'
   gem 'with_model'
 end
-#execjs need js runtime, use nodejs of system instead.
-gem 'puma'
 
 group :development do
-  gem "spring"
   gem 'pry-rails'
-  #gem 'rack-mini-profiler', require: false
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'byebug'
-#  gem 'web-console', '~> 3.0'
-#  gem 'capistrano'
-#  gem 'capistrano-rails', '~> 1.1.0'
-#  gem 'capistrano-rvm', '~> 0.1.0'
-#  #gem "rails-erd"
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

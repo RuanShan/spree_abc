@@ -34,9 +34,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'sitemap_generator'
 
-#gem 'bootstrap-sass'
-#gem 'font-awesome-rails'
-# support multiple theme by file
-#gem 'themes_on_rails',  github: "spree/spree_editor", branch: "master"
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 
 gemspec

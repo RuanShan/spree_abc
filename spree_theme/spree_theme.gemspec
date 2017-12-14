@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id'
   s.add_dependency 'useragent'
   s.add_dependency 'acts_as_commentable'
-  s.add_dependency 'font-awesome-rails'
+  s.add_dependency 'font-awesome-rails', '~> 4.7.0'
   s.add_dependency 'sitemap_generator'
   s.add_dependency 'acts-as-taggable-on'
   s.add_development_dependency 'capybara', '~> 2.6'

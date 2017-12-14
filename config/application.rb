@@ -11,6 +11,8 @@ end
 
 module SpreeAbc
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.1
 
     config.to_prepare do
       # Load application's model / class decorators
@@ -69,8 +71,6 @@ module SpreeAbc
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    #rails5 required
-    ActiveSupport.halt_callback_chains_on_return_false = false
     #config.cache_store = [:mem_cache_store, '127.0.0.1', { namespace: 'getstore', compress: true }]
   end
 end
