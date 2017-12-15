@@ -60,7 +60,7 @@ SpreeAbc::Application.configure do
   #    :exception_recipients => %w{mail-to-info}
   #  }
   # authorize_site compare request.host with system_top_domain
-  config.spree_multi_site.system_top_domain = 'localhost'
+  config.spree_multi_site.system_top_domain = 'david.com'
 
 
 end
