@@ -10,16 +10,8 @@
    }
 
 
-   .login-container{
-     margin: 15px auto;
-
-     table{
-       tbody {
-         tr {
-           &:hover td {
-             background-color: #5498da;
-           }
-         }
-       }
+   .new_spree_user{
+     .form-group{
+       text-align: left;
      }
    }
