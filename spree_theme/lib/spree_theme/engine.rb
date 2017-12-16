@@ -44,11 +44,6 @@ module SpreeTheme
     end
 
     ## copy from themes_on_rails
-    initializer 'themes_on_rails.action_controller' do |app|
-      ActiveSupport.on_load :action_controller do
-      end
-    end
-
     initializer 'themes_on_rails.load_locales' do |app|
       app.config.i18n.load_path += Dir[Rails.root.join('app/themes/*', 'locales', '**', '*.yml').to_s]
     end

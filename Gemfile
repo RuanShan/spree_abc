@@ -34,11 +34,14 @@ eval(File.read(File.dirname(__FILE__) + '/common_spree_dependencies.rb'))
 #support rich_editor
 gem 'ckeditor'
 gem 'spree_editor',  github: "spree/spree_editor", branch: "master"
+
 #gem 'spree_related_products', github: 'RuanShan/spree_related_products', branch: "3-1-stable"
 # gem 'sprangular',   path: './sprangular'
 #'bundle update spree_multi_site' to update gem
 # bundle config require specified branch, or warning message as below
 # Cannot use local override for spree_multi_site at ../spree_multi_site because :branch is not specified in Gemfile. Specify a branch or use `bundle config --delete` to remove the local override
+
+#gem 'spree_multi_site',   path: './spree_multi_site'
 
 # Use SCSS for stylesheets,  spree_theme/spree_devise_auth required
 #gem 'spree_multi_site',   path: './spree_multi_site'
@@ -59,8 +62,8 @@ gem 'alipay'
 gem 'coffee-rails', '~> 4.2'
 gem 'spree_china_checkout',   path: './spree_china_checkout'
 #gem 'spree_essential_blog',   path: './spree_essential_blog'
-gem 'spree_pingpp',   path: './spree_pingpp'
 
+#gem 'spree_pingpp',   path: './spree_pingpp'
 
 gem 'wechat'
 #gem 'spree_omniauth',   path: './spree_omniauth'
