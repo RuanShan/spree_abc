@@ -3,45 +3,15 @@
        margin: 150px auto 0  auto;
        width: 500px;
    }
-   .login-container{
-       
-   }
-    /*.login-container table tbody tr:hover{
-       background-color: #5498da;
-   }*/
+
    .admin-container-title{
        text-align:center;
        color:white;
    }
-   
 
-   .login-container{
-       
-     background-color: #5498da;
-     padding: 10px 75px ;
-     
-     h2{ padding:10px; }
-     
-     form{
-         
-         p { padding: 5px; } 
-         label { color:white; }
-         input[type='submit']{ 
-           background-color: #9FC820;
-         /*  border: solid 1px  #009DE6;
-         */
-         }
-         
+
+   .new_spree_user{
+     .form-group{
+       text-align: left;
      }
-     
-     table{
-       tbody {
-         tr {
-           &:hover td {
-             background-color: #5498da;
-           }
-         }
-       }
-     }
-   } 
-    
+   }

@@ -4,7 +4,7 @@ class Spree::PostsController < Spree::BaseController
 
   helper "spree/products"
 
-  before_filter :get_sidebar, :only => [:index, :search, :show]
+  before_action :get_sidebar, :only => [:index, :search, :show]
 
   def index
     @posts_by_month = default_scope.limit(50).group_by { |post| post.posted_at.strftime("%B %Y") }

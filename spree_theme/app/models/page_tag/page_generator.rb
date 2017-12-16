@@ -13,8 +13,8 @@ module PageTag
     #    we would like to use helper method of rails, so now is using controller as renderer
     # * resource_options - parameter for resource, for example, pagination
     attr_accessor :is_preview, :controller, :renderer, :resource_options
-    #
-    attr_accessor :ehtml, :ecss, :ejs, :ruby
+    #ehtmls 字符串数组，对应不同的context
+    attr_accessor :ehtmls,:ehtml, :ecss, :ejs, :ruby
     delegate :generate, :generate_assets, :to=>:renderer
     delegate :html,:css,:js, :to=>:renderer
 
@@ -81,21 +81,24 @@ module PageTag
     #end
 
     #build html, css sourse
-    def build
-      self.ehtml, self.ecss, self.ejs = self.theme.original_page_layout_root.build_content()
-      return self.ehtml, self.ecss, self.ejs
+    def build( special_contexts=[] )
+
+      self.ehtmls, self.ecss, self.ejs = self.theme.original_page_layout_root.build_content(special_contexts)
+      self.ehtml = self.ehtmls.first
+
     end
 
-    def release
-      #build -> generate_assets -> serialize
-      self.build            # build ehtml, ecss, ejs
-      self.generate_assets  # generate css, js
-      self.ruby = erb.new(self.ehtml).src
-      serialize_page(:ehtml)
-      serialize_page(:css)
-      serialize_page(:js)
-      serialize_page(:ruby)
-    end
+
+    #def release( )
+    #  #build -> generate_assets -> serialize
+    #  self.build            # build ehtml, ecss, ejs
+    #  self.generate_assets  # generate css, js
+    #  self.ruby = erb.new(self.ehtml).src
+    #  serialize_page(:ehtml)
+    #  serialize_page(:css)
+    #  serialize_page(:js)
+    #  serialize_page(:ruby)
+    #end
 
     def renderer
       if @renderer.blank?
@@ -118,19 +121,25 @@ module PageTag
       url
     end
 
-    # *specific_attribute - ehtml,ecss, html, css
-    def serialize_page(specific_attribute)
-      specific_attribute_collection = [:css,:js,:ehtml,:ruby]
-      raise ArgumentError unless specific_attribute_collection.include?(specific_attribute)
-      page_content = send(specific_attribute)
-      if page_content.present?
-        path = self.theme.document_path
-        FileUtils.mkdir_p(path) unless File.exists?(path)
 
-        path = self.theme.document_file_path(specific_attribute)
-        open(path, 'w') do |f|  f.puts page_content; end
-      end
+    #取得模板文件路径,生成页面时使用
+    def released_page_path( )
+      self.theme.releaser.page_document_path( self.menu )
     end
+
+
+    # *specific_attribute - ehtml,ecss, html, css
+    #def serialize_page(specific_attribute)
+    #  specific_attribute_collection = [:css,:js,:ehtml,:ruby]
+    #  raise ArgumentError unless specific_attribute_collection.include?(specific_attribute)
+    #  page_content = send(specific_attribute)
+    #  if page_content.present?
+    #    path = self.theme.document_path
+    #    FileUtils.mkdir_p(path) unless File.exists?(path)
+    #    path = self.theme.document_file_path(specific_attribute)
+    #    open(path, 'w') do |f|  f.puts page_content; end
+    #  end
+    #end
 
     private
     # erb context variables

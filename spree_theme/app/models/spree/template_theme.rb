@@ -36,16 +36,21 @@
 # *
 
 module Spree
-  #it is a theme of page_layout
+  #it is a theme of page_lay
   class TemplateTheme < ActiveRecord::Base
     include AssignedResource::TemplateResourceGlue
     include Shared::TemplateThemePath
     #extend FriendlyId
     TerminalEnum = Struct.new( :desktop, :mobile, :pad, :tv )[0,1,2,3]
+    # 模板生成客户页面的方法
+    #   all: 编译页面内容在一个方法里，调用这个方法生成页面
+    #   page: 对应每一类页面生成一个文件，生成页面时引擎选择相应文件返回给客户
+    enum renderer: { renderer_all: 0, renderer_page: 1, renderer_none: 4 } #, _prefix: true
 
     belongs_to :store, :foreign_key => "store_id"
 
     # for now template_theme and page_layout are one to one
+    # 可能多个TemplateTheme对应一个page_layout_root
     has_one :page_layout_root, -> { where parent_id: nil }, class_name: "Spree::PageLayout"
     # partial_htmls required, initialize parent first.
     has_many :page_layouts, ->{ order('lft') }, inverse_of: :template_theme
@@ -146,20 +151,16 @@ module Spree
     # 生成模板文件
     # params
     #   options:  page_only- do not create template_release record, rake task import_theme required it
-    def release( release_attributes= {},option={})
-      if option[:page_only]
-        self.current_template_release.touch #trigger define new compiled_template_theme method
-      else
-        template_release = self.template_releases.build
-        template_release.name = "just a test"
-        template_release.save!
-      end
-      self.reload # release_id shoulb be template_release.id
-      @lg = PageTag::PageGenerator.releaser( self )
-      @lg.release
+    def release( release_attributes= {},  options={} )
+
+      releaser(  options  ).release
+
       self.current_template_release
     end
 
+    def releaser( options={} )
+      TemplateThemeReleaser.new( self, options)
+    end
 
     begin 'edit template'
 
@@ -183,8 +184,9 @@ module Spree
 
       # template theme contained native page layout and param values
       def original_template_theme
-        # duplicated_from || self
-        self.class.where(:page_layout_root_id=>self.page_layout_root_id).first
+
+        duplicated_from || self
+        #self.class.where(:page_layout_root_id=>self.page_layout_root_id).first
       end
 
       def duplicator
@@ -388,8 +390,9 @@ module Spree
     # is page_layout valid to taxon, taxon is current page
     # return true if taxon is decendant of specific_taxons
     def valid_context?(selected_page_layout, taxon)
+      #这里主要是考虑执行速度，所以只处理具有上下文的页面
       #stylish only apply page_layout with context other than either.
-      if !selected_page_layout.context_either?
+      if selected_page_layout.stylish >0 #!selected_page_layout.context_either?
         # Rails.logger.debug "--------selected_page_layout=#{ selected_page_layout.title} --------"
         # page_layout.stylish_with_inherited is required, child should get stylish from accestor
         return false unless ( selected_page_layout.stylish_with_inherited == taxon.stylish_with_inherited )

@@ -3,6 +3,8 @@ source 'https://rubygems.org/'
 
 eval(File.read(File.dirname(__FILE__) + '/../common_spree_dependencies.rb'))
 
+#https://www.cnblogs.com/Sophiawow/p/4523026.html
+gem 'tzinfo-data', platforms: [:x64_mingw, :mingw, :mswin]
 
 group :test,:development do
   #gem 'ruby-graphviz' #print checkout flow
@@ -21,6 +23,7 @@ gem "acts_as_list"
 gem "acts_as_tree"
 gem "awesome_nested_set"
 gem 'acts_as_commentable'
+gem 'acts-as-taggable-on'
 
 # spree already contain
 #gem 'jquery-rails'
@@ -31,9 +34,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'sitemap_generator'
 
-#gem 'bootstrap-sass'
-#gem 'font-awesome-rails'
-# support multiple theme by file
-#gem 'themes_on_rails',  github: "spree/spree_editor", branch: "master"
+gem 'bootstrap-sass'
+gem 'font-awesome-rails'
 
 gemspec

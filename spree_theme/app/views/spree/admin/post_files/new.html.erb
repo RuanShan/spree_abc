@@ -1,0 +1,13 @@
+<%= render :partial => 'spree/admin/shared/post_tabs', :locals => {:current => "Post Files"} unless request.xhr? %>
+
+<%= render 'spree/shared/error_messages', :target => @post_file %>
+
+<%= form_for(@post_file, :url => admin_post_files_path(@post), :html => { :multipart => true }) do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+
+  </fieldset>
+
+<% end %>

@@ -3,7 +3,7 @@ module Spree
   module PermittedAttributes
     ATTRIBUTES_FOR_THEME=[:page_layout_attributes,:param_value_attributes,:section_piece_param_attributes,
      :section_attributes, :template_file_attributes, :template_text_attributes, :template_theme_attributes,
-     :comment_type_attributes, :comment_attributes]
+     :comment_type_attributes, :comment_attributes, :blog_attributes, :post_attributes, :post_file_attributes, :post_product_attributes]
     mattr_reader *ATTRIBUTES_FOR_THEME
 
     @@page_layout_attributes = [ :section_id,:title, :content_param, :data_source, :data_filter, :data_source_order_by, :data_source_param, :css_class, :css_class_for_js, :content_css_class, :stylish, :section_context ]
@@ -20,6 +20,11 @@ module Spree
     @@comment_attributes = [:commentable_id, :commentable_type, :user_id, :comment_type_id, :comment, :cellphone, :email]
 
     @@store_attributes += [ logo_attributes:[:attachment], favicon_attributes:[:attachment] ]
+
+    @@blog_attributes = [:name, :permalink]
+    @@post_attributes = [ :title, :cover, :teaser, :body, :posted_at, :author, :live, :tag_list, :taxon_ids, :product_ids_string, :meta_keywords, :meta_description]
+    @@post_file_attributes = [:alt, :attachment]
+    @@post_product_attributes = [:post_id, :product_id, :position]
 
   end
 end

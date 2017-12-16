@@ -11,6 +11,8 @@ end
 
 module SpreeAbc
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.1
 
     config.to_prepare do
       # Load application's model / class decorators
@@ -66,7 +68,6 @@ module SpreeAbc
     # like if you have constraints or database-specific column types
     # config.active_record.schema_format = :sql
 
-    config.active_record.raise_in_transactional_callbacks = true
     # Enable the asset pipeline
     config.assets.enabled = true
 

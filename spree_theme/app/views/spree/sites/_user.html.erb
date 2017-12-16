@@ -1,0 +1,16 @@
+<div data-hook="user_form_fields">
+  <p>
+    <%= label :user, :email  %><br />
+    <%= email_field :user, :email %>
+  </p>
+
+  <p>
+    <%= label :user,:password, Spree.t(:password) %><br />
+    <%= password_field :user,:password, :minlength=>6, :maxlength=>30, :required=>"" %>
+  </p>
+
+  <p>
+    <%= label :user,:password_confirmation, Spree.t(:confirm_password) %><br />
+    <%= password_field :user,:password_confirmation, :minlength=>6, :maxlength=>30, :required=>"" %>
+  </p>
+</div>

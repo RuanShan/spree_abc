@@ -1,0 +1,19 @@
+<div data-hook="admin_user_form_fields">
+  <p>
+    <%= label :user, :email, t(:user_email) %><span class="required">*</span><br />
+    <%= email_field :user, :email %>
+    <%= error_message_on  :user,:email %>
+  </p>
+
+  <p>
+    <%= label :user,:password, t(:password,:scope=>['activerecord','attributes','user']) %><span class="required">*</span><br />
+    <%= password_field :user,:password %>
+    <%= error_message_on :user,:password %>
+  </p>
+
+  <p>
+    <%= label :user,:password_confirmation, t(:confirm_password) %><span class="required">*</span><br />
+    <%= password_field :user,:password_confirmation %>
+    <%= error_message_on :user,:password_confirmation %>
+  </p>
+</div>

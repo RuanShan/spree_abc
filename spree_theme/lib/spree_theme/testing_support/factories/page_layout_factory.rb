@@ -17,6 +17,28 @@ FactoryGirl.define do
     end
   end
 
+
+  #   root
+  #     node1(stylish1) -
+  #     node2(stylish2) - pv(1)
+  #       node21 - pv(2)
+  #       node22 - pv(2)
+  factory :page_layout_stylish_01, class: Spree::PageLayout do
+    title 'page layout stylish tree'
+    stylish 0
+    after(:create) do |pl, evaluator|
+      create( :page_layout_node, parent: pl, template_theme: pl.template_theme, stylish: 1)
+    end
+  end
+  factory :page_layout_stylish_10, class: Spree::PageLayout do
+    title 'page layout stylish tree'
+    stylish 1
+    after(:create) do |pl, evaluator|
+      create( :page_layout_node, parent: pl, template_theme: pl.template_theme, stylish: 0)
+    end
+  end
+
+
   factory :page_layout_node, class: Spree::PageLayout do
     association :section, factory: :section
     title 'page layout node'

@@ -12,7 +12,6 @@ db/sample9
 .bundle
 config/deploy
 config/deploy/*
-Gemfile.lock
 public/shops/staging
 public/shops/development
 public/shops/aliyun_development

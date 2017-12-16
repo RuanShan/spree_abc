@@ -1,7 +1,7 @@
 module Spree
   class Admin::AdHocVariantExclusionsController < Admin::ResourceController
 
-    before_filter :load_product, :only => [:index, :new, :create]
+    before_action :load_product, :only => [:index, :new, :create]
 
     def create
 

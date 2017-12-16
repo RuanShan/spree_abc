@@ -4,3 +4,22 @@
   3. customer make comment of site
   4. customer view order detail
   5. customer edit profile
+
+#模板的开发
+1. 通过编辑器设计页面
+2. 发布模板
+3. 店铺引用模板，并设置相应的店铺信息
+4. 店铺发布网站
+
+#关于模板的修改
+为了模板的安全，当生成模板文件以后，对于page_layout的任何修改，只在下次发布时才起作用。
+
+
+
+#模板的渲染过程
+1. 设计模板时，模板渲染过程
+根据 page_layout tree，查找每一个section, 提取default_section_piece，组装成section, 然后组装page_layout tree对应的模板原始源文件
+
+
+
+2. 模板发布后，正常浏览的渲染过程

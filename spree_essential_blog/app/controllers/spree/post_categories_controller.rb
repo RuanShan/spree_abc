@@ -2,7 +2,7 @@ class Spree::PostCategoriesController < Spree::BaseController
   
   include SpreeEssentialBlog::PostsControllerHelper
 
-  before_filter :get_sidebar, :only => [:index, :search, :show]
+  before_action :get_sidebar, :only => [:index, :search, :show]
   
   def show
     @category = Spree::PostCategory.find_by_permalink(params[:id])

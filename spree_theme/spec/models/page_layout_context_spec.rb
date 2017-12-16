@@ -44,11 +44,4 @@ describe Spree::PageLayout do
   end
 
 
-  # page_layout tree
-  # root
-  #   product-list-grid( stylish=0 )
-  #   product-list-line( stylish=1 )
-  # taxon0(stylish=0), taxon1( stylish=1)
-  # taxon0.valid_context?(product-list-grid ) => true
-  # taxon0.valid_context?(product-list-line ) => false
 end

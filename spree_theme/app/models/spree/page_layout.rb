@@ -9,8 +9,10 @@
 #   TODO: 定制font-awesome， css_class 可以支持这个功能。
 # data_source： 数据源类型， 菜单/产品/文章
 # data_source_param: 数据源参数 per_page
-# stylish: 所属样式，一个模板可以定义产品/文章的多个显示样式，每个页面可以选择适用的样式。 default is 0
-#
+# 一个模板可以定义产品列表/文章列表的多个显示样式，每个页面可以选择适用的样式。
+# stylish: 样式号码，用于实现上述需求，
+#   page_layout 和 taxon 分别有自己的样式号码,即页面声明的样式号码与模板的样式号码一致时，显示相应模板
+#   样式号码为0时，表示通用，即这个section适用任意页面，无论这个页面的stylish设置为多少
 
 
 
@@ -22,7 +24,7 @@ module Spree
     PaginationStyle = Struct.new( :page_links, :pn_links, :infinitescroll, :more, :none )['1', 'pn', 'i', 'm', '0']
 
     # depth is massed up while duplicate full set. so we disable it here.
-    acts_as_nested_set :scope=>['template_theme_id' ], :depth_column=>'notallowed', :dependent=> :destroy # scope is for :copy, no need to modify parent_id, lft, rgt.
+    acts_as_nested_set :scope=>['template_theme_id' ], :depth_column=>'notallowed', :dependent=> :destroy # scope is for :copy, no need to modify  lft, rgt.
     belongs_to :section
     belongs_to :template_theme, :class_name =>'Spree::TemplateTheme'
     # has_many :themes, :class_name => "TemplateTheme",:primary_key=>:root_id,:foreign_key=>:page_layout_root_id
@@ -220,7 +222,9 @@ module Spree
           #     2+ 4+ 8+ 16 +32+ 64+ 128+ 256 = 510
           val = get_content_param&510
           val>0 ? val : default_truncate_at
-        when :context                                     # bootstrap_glyphicon could link to home/cart...
+        when :context
+          #图标生成链接时，需要知道对应的 context.
+          # bootstrap_glyphicon could link to home/cart...
           #bit 2,3,4,5,6  max is 31
           #000010       000100   000110       001000     001010      001100    001110        010000    010010
           #2:home       4:cart   6:checkout   8:thanks   10:signup   12:login  14:account   16:blog    18:list
@@ -252,9 +256,15 @@ module Spree
       return (rgt-lft)>1
     end
 
+
     def stylish_with_inherited
       return self.stylish if self.stylish>0
-      inherited= self.ancestors.select{|page_layout| page_layout.stylish >0 }.last
+      #在解析模板的每一个page_layout时，都需要调用这个方法，这会发生查询每一个节点的前辈，
+      #为了减少数据库查询和便于缓存，这里使用查询这个树，再找前辈的方式
+
+      #inherited = self.ancestors.select{|page_layout| page_layout.stylish >0 }.last
+      inherited = self.root.self_and_descendants.select{|page_layout| page_layout.is_ancestor_of?(self) }.select{|page_layout| page_layout.stylish >0 }.last
+
       return inherited.stylish if inherited.present?
       return 0
     end
@@ -372,22 +382,31 @@ module Spree
     end
 
     begin 'section content, html, css, js'
-      def build_content()
+      def build_content( special_contexts=[] )
         tree = self.self_and_descendants.includes(:section=>[:section_piece, :full_set_nodes])
         # have to Section.all, we do not know how many section_pieces each section contained.
         sections = Section.includes(:section_piece)
         section_hash = sections.inject({}){|h, s| h[s.id] = s; h}
         css = build_css(tree, self, section_hash)
-        html = build_html(tree,  section_hash)
+        htmls = build_htmls(tree,  section_hash, special_contexts)
         js = build_js(tree, sections)
-        return html, css, js
+        return htmls, css, js
       end
 
       # Usage: build html, js, css for a layout
       # Params: theme_id,
       #         if passed, build css for that theme, or build css for default theme
-      def build_html(tree = [], section_hash = {})
-        build_section_html(tree, self, section_hash)
+      # 返回数组
+      def build_htmls(tree = [], section_hash = {}, special_contexts=[])
+        if special_contexts.present?
+          special_contexts.map{|special_context|
+            build_section_html(tree, self, section_hash, special_context)
+          }
+        else
+          [:any_context].map{
+            build_section_html(tree, self, section_hash)
+          }
+        end
       end
 
       def build_css(tree, node, section_hash, theme_id=0)
@@ -610,14 +629,16 @@ module Spree
 
     private
     # a page_layout build itself.
-    def build_section_html(tree, node, section_hash)
+    def build_section_html(tree, node, section_hash, special_context = nil)
+      #
+      return '' if special_context.present? && !node.valid_context?(special_context)
       return '' unless node.is_enabled?
       subpieces = ""
       unless node.leaf?
         subnodes = tree.select{|n| n.parent_id==node.id}
         for child in subnodes
           next unless child.is_enabled?
-          subpiece = build_section_html(tree, child, section_hash)
+          subpiece = build_section_html(tree, child, section_hash, special_context)
           subpieces.concat(subpiece)
         end
       end

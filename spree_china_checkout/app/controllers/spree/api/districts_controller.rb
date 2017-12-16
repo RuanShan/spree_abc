@@ -4,8 +4,8 @@ module Spree
       #initializers/rabl_extra.rb is not working right.
       #get sight from api/controller_setup
 
-      skip_before_filter :check_for_user_or_api_key
-      skip_before_filter :authenticate_user
+      skip_before_action :check_for_user_or_api_key
+      skip_before_action :authenticate_user
 
       def index
         @districts = scope.ransack(params[:q]).result.

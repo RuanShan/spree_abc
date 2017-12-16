@@ -1,0 +1,20 @@
+<%= render :partial => 'spree/admin/shared/post_tabs', :locals => {:current => "Post Details"} %>
+<h4><%= h(l @post.posted_at, :format => :detailed).gsub(/\s0/, ' ') %></h4>
+<br/>
+
+<% for image in @post.images do %>
+  <%= image_tag image.attachment.url(:small), :alt => @post.title %>
+<% end %>
+
+<%= @post.body.html_safe %>
+
+<br class="clear" />
+
+<div class="form-buttons filter-actions actions" data-hook="buttons">
+  <%= button_link_to Spree.t('actions.edit'), edit_object_url(@post) , :icon => 'edit' %>
+    <span class="or"><%= Spree.t(:or) %></span>
+  <%= button_link_to Spree.t('actions.list'), collection_url, :icon => 'arrow-left' %>
+    <span class="or"><%= Spree.t(:or) %></span>
+  <%= button_link_to Spree.t('actions.delete'), collection_url, :icon => 'remove' %>
+
+</div>

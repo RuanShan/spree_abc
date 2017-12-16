@@ -1,0 +1,2 @@
+1. 合并 spree_posts, spree_theme,  简化系统，便于测试spree_theme
+2. 使用 stylish 删除 Spree::SpecificTaxon 功能

@@ -4,7 +4,7 @@ module SpreeEssentialBlog::PostsControllerHelper
 
   included do
     helper 'spree/posts'
-    before_filter :get_blog
+    before_action :get_blog
   end
 
 private

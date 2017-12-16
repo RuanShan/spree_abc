@@ -4,7 +4,7 @@ module SpreeTheme::FileTheme
 
     class << self
       def apply_theme(controller_class, theme, options={})
-        filter_method = before_filter_method(options)
+        filter_method = before_action_method(options)
         options       = options.slice(:only, :except)
 
         # set layout
@@ -38,10 +38,10 @@ module SpreeTheme::FileTheme
 
       private
 
-        def before_filter_method(options)
+        def before_action_method(options)
           case Rails::VERSION::MAJOR
           when 3
-            options.delete(:prepend) ? :prepend_before_filter : :before_filter
+            options.delete(:prepend) ? :prepend_before_action : :before_action
           when 4, 5
             options.delete(:prepend) ? :prepend_before_action : :before_action
           end

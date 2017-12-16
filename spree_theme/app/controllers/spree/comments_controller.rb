@@ -1,6 +1,6 @@
 module Spree
   class CommentsController < StoreController
-    before_filter :initialize_comment, :only => [:create, :new_to_site]
+    before_action :initialize_comment, :only => [:create, :new_to_site]
 
     def new_to_site
       @comment.commentable = Spree::Store.current

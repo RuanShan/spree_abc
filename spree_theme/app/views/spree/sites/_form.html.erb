@@ -1,0 +1,28 @@
+<div data-hook="admin_site_form_fields">
+  <div class="clearfix">
+    <div class="left" data-hook="admin_site_form_left">
+      <p>
+        <%= f.label :name %> <br />
+        <%= f.text_field :name, :minlength=>4, :maxlength=>30, :required=>true  %>
+      </p>
+
+        <p>
+          <%= f.label  :email, Spree.t(:email)  %><br />
+          <%= f.email_field :email, size: 30 %>
+        </p>
+
+        <p>
+          <%= f.label :password, Spree.t(:password) %><br />
+          <%= f.password_field :password, :minlength=>6, :maxlength=>30, :required=>"" %>
+        </p>
+
+      <% if @template_theme.present? %>
+        <p>
+          <%= f.label :foreign_theme_id %> <br />
+          <%= f.hidden_field :foreign_theme_id, :value=>@template_theme.id %>
+          <%= text_field_tag :template_theme_name, @template_theme.title, :readonly=>true, :size=>30 %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

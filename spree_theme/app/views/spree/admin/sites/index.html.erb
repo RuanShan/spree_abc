@@ -1,0 +1,40 @@
+<% content_for :page_title do %>
+  <%= Spree.t('site.index') %>
+<% end %>
+  <table class="index table" >
+    <colgroup>
+       <col style="width: 15%;">
+       <col style="width: 20%;">
+       <col style="width: 22%;">
+       <col style="width: 10%;">
+       <col style="width: 22%;">
+       <col style="width: 10%;">
+    </colgroup>
+        <thead>
+          <th><%= Spree::Site.human_attribute_name(:name) %></th>
+          <th><%= Spree::Site.human_attribute_name(:domain) %></th>
+          <th><%= Spree.user_class.human_attribute_name(:email) %></th>
+          <th><%= Spree::Site.human_attribute_name(:status) %></th>
+          <th><%= Spree::Site.human_attribute_name(:created_at) %></th>
+          <th> </th>
+        </thead>
+        <tbody>
+          <%- @sites.each do |site|%>
+          <tr>
+            <td ><%= site.name %></td>
+            <td ><%= site.subdomain %></td>
+            <td >
+             <%= Spree::MultiSiteSystem.with_context_admin_sites{   site.users.admin.first.email  }%>
+            </td>
+            <td >  <%= site.status %> </td>
+            <td ><%= pretty_time site.created_at %></td>
+            <td class="actions">
+              <%= link_to_with_icon('edit', Spree.t(:edit), spree.edit_admin_site_url(site), class: 'btn btn-primary btn-sm', no_text: true, data: { action: 'edit' }) if can? :edit, site %>
+              <%= link_to_with_icon 'eye-open', Spree.t(:admin_store), site.admin_url, {class: 'btn btn-primary btn-sm', target: '_blank', no_text: true} %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+  </table>
+
+<%= paginate @sites %>

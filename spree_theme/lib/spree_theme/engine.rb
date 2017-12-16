@@ -4,6 +4,13 @@ module SpreeTheme
     isolate_namespace Spree
     engine_name 'spree_theme'
 
+    # copy from engine spree_multi_site
+    config.spree_multi_site = SpreeMultiSite::Environment.new
+
+    initializer "spree.multisite.add_middleware" do |app|
+      app.middleware.use SpreeMultiSite::Middleware
+    end
+
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/models/spree/calculator)
     # use rspec for tests
     config.generators do |g|

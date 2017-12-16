@@ -22,7 +22,20 @@ Spree::Core::Engine.add_routes do
 
   end
 
+  ##############################################################################
+  # mulit site
+  # one click get form to trial
+  get 'one_click_trial' => 'sites#one_click_trial', :as => :one_click_trial
+  # bottom signup form
+  post 'quick_lunch',:to => 'sites#quick_lunch', :as => :quick_lunch
+  # create site with template_theme
+  get 'new_site' => 'sites#new', :as => :new_site
+  post 'create_site' => 'sites#create', :as => :create_site
+  resources :sites, :only => [:show]
+  ##############################################################################
+
   namespace :admin do
+    resources :sites
     resources :comments
     resources :comment_types
     resources :orders do
@@ -45,6 +58,18 @@ Spree::Core::Engine.add_routes do
       end
     end
 
+  end
+
+  namespace :admin do
+      resources :posts do
+        resources :files,   :controller => "post_files" do
+          collection do
+            post :update_positions
+          end
+        end
+        resources :products, :controller => "post_products"
+        resources :categories, :controller => "post_categories"
+      end
   end
 
   resources :comments, :only=>[:create] do

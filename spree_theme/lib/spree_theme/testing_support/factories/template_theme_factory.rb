@@ -21,6 +21,26 @@ FactoryGirl.define do
     name 'tempalte release'
   end
 
+  factory :stylished_template_theme, class: Spree::TemplateTheme do
+    title 'template theme'
+    transient do
+      stylish 1
+    end
+    after(:create) do |theme, evaluator|
+      create( :page_layout, template_theme: theme, stylish: evaluator.stylish )
+    end
+  end
+
+  factory :template_theme_stylish_tree, class: Spree::TemplateTheme do
+    title 'template theme'
+    transient do
+      stylish '01'
+    end
+    after(:create) do |theme, evaluator|
+      create( "page_layout_stylish_#{evaluator.stylish}", template_theme: theme)
+    end
+  end
+
   # template_theme
   #      page_layout_root
   #          section_root
@@ -30,6 +50,7 @@ FactoryGirl.define do
     store
     after(:create) do |theme, evaluator|
       create(:page_layout_root, template_theme: theme)
+
     end
   end
 

@@ -14,8 +14,9 @@ module SpreeTheme
   mattr_accessor :site_class, :taxon_class, :post_class
 
   def self.site_class
+    #default has to be Spree::FakeWebsite, then we could test without spree_multi_site
+    @@site_class ||= "Spree::Site"
 
-    @@site_class ||= "Spree::FakeWebsite"
     if @@site_class.is_a?(Class)
       raise "Spree.site_class MUST be a String object, not a Class object."
     elsif @@site_class.is_a?(String)
@@ -43,6 +44,8 @@ module SpreeTheme
   end
 end
 
+require 'spree_multi_site'
+
 require 'spree_core'
 require 'spree_theme/sitemap_helper'
 require 'spree_theme/engine'
@@ -57,3 +60,4 @@ require 'spree_theme/permitted_attributes'
 require 'spree_theme/controller_helpers/strong_parameters'
 require 'spree_theme/template_base_helper'
 require 'spree_theme/client_info'
+require 'spree_theme/blog_search'

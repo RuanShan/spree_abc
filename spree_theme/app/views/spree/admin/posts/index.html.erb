@@ -1,0 +1,78 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:post_list) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t('new_post'), new_admin_post_url, { :class => "btn-success",:icon => 'add', :id => 'admin_new_post' }%>
+<% end if can? :create, Spree::Post %>
+
+<% content_for :table_filter_title do %>
+  <%= Spree.t(:search) %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_posts_sidebar">
+
+    <%= search_form_for [:admin, @search] do |f| %>
+
+        <div data-hook="admin_posts_index_search">
+          <div class=" sixteen columns">
+            <div class="field">
+            <%= f.label :title_cont, Spree.t("title") %><br />
+            <%= f.text_field :title_cont, :size => 25 %>
+            </div>
+          </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="form-buttons actions filter-actions" data-hook="admin_posts_index_search_buttons">
+          <%= button Spree.t(:search), 'search' %>
+        </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= paginate @collection %>
+
+<% if @collection.any? %>
+
+<table class="table">
+    <colgroup>
+       <col style="width: 8%;">
+       <col style="width: 52%;">
+       <col style="width: 16%;">
+       <col style="width: 8%;">
+       <col style="width: 12%;">
+    </colgroup>
+  <thead>
+	<tr>
+    	<th colspan="2"><%= sort_link @search, :title, Spree.t("title") %></th>
+    	<th><%= sort_link @search, :posted_at, t("activerecord.attributes.spree/post.posted_at") %></th>
+    	<th><%= sort_link @search, :live, t("activerecord.attributes.spree/post.live") %></th>
+    	<th class="actions"></th>
+	</tr>
+  </thead>
+  <tbody>
+    <%- @collection.each do |post|%>
+    <tr id="<%= spree_dom_id post %>" class="<%= cycle('odd', 'even') %>">
+      <td class="align-center"><%= mini_cover(post) %></td>
+      <td ><%=  post.title %></td>
+      <td class="align-center"><%= pretty_time post.posted_at %></td>
+      <td class="align-center"><%= post.live ? Spree.t('say_yes') : Spree.t('not') %></td>
+      <td class="actions">
+          <%= link_to_edit post, :no_text => true, :class => 'edit' if can?(:edit, post) %>
+          <%= link_to_delete post, :no_text => true if can?(:delete, post)  %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: I18n.t(:other, scope: 'activerecord.models.spree/post')) %>,
+    <%= link_to Spree.t(:add_one), spree.new_admin_post_path %>!
+  </div>
+<% end %>
+
+<%= paginate @collection %>

@@ -23,6 +23,8 @@ module SpreeTheme
             #if @is_preview
             #  return 'layout_for_preview'
             #end
+
+            return 'layout_for_page' if @theme.renderer_page?
             'layout_for_compiled' # @theme.layout_path || Spree::Store.current.layout || Spree::Config[:layout]
           end
 

@@ -5,7 +5,7 @@ describe Spree::TemplateTheme do
   let (:section_root) { create :section_root }
 
   before(:each) do
-    create(:store, active: true)
+    create(:store)
     @taxon = create(:taxon)
   end
 

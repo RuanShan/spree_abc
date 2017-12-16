@@ -1,0 +1,115 @@
+zh-CN:
+  # Spree Hax! Missing translation...
+  image_settings_description: "Image Settings"
+  activerecord:
+    attributes:
+      blog:
+        model_name: Blog
+        name: Name
+      spree/post:
+        model_name: 文章
+        title: 标题
+        posted_at: 发布时间
+        body: 正文
+        cover: 图片
+        live: 是否发布
+        tags: 标签
+        author: 作者
+      post_category:
+        model_name: Category
+        name: Name
+    models:
+      spree/post:
+        one: 文章
+        other: 文章
+      spree/post_file:
+        one: 文件
+        other: 文件
+
+  spree:
+    back_to_post_list: 回到文章列表
+    post_list: 文章列表
+    new_post: 新建文章
+    edit_post: 编辑文章
+    admin:
+      tab:
+        posts: 文章
+      blogs:
+        new:
+          new_blog: New Blog
+        index:
+          new_blog: New Blog
+      post:
+        index:
+          post_list: 文章列表
+        new:
+          new_post: 新建文章
+        edit:
+          edit_post: 编辑文章
+      post_products:
+        index:
+          add_related_product: Add Related Products
+      post_categories:
+        index:
+          manage_categories: Manage Categories
+      shared:
+        post_tabs:
+          post_details: Post Details
+          editing_post: Editing Post
+          related_products: Related Products
+          post_categories: Categories
+    comments: Comments
+    home:
+      title: Recent Posts
+    archive: Blog Archive
+    files: 文件
+    new_post_file: 新建文件
+    no_posts: No posts found!
+    no_post_files_found: 找不到任何文件!
+    posts: 文章
+    post:
+      index:
+        blog: Blog
+        rss: Subscribe via RSS
+      archive:
+        title: Archive
+        where_to_next: Where to next?
+        go_to_store: "Shop the Store"
+        back_to_posts: "Back to the blog"
+      show:
+        tagged: Tagged
+    post_details: 文章详细
+    post_files: 文件
+    settings:
+      blogs: Manage Blogs
+      explain_blogs: Add or Edit Blogs for posts.
+      disqus: Disqus Settings
+      explain_disqus: Configure Disqus Comments for Blog.
+      disqus_shortname: Disqus Shortname
+    shared:
+      sidebar:
+        recent_posts: Recent Posts
+        categories: Categories
+        archives: Archive
+        view_archive: View Full Archive
+        tags: Tags
+      preview:
+        read_more: Read More
+      post_tabs:
+        editing_post: Editing Post
+        post_details: Post Details
+        related_products: Related Products
+        post_categories: Categories
+    subnav:
+      posts: Blog Posts
+    title: 标题
+
+  time:
+    formats:
+      date_time: "%x %X"
+      date_full: "%A %B %d, %Y"
+      detailed: "%A %B %d, %Y at %I:%M%p"
+      date_only: "%x"
+  date:
+    formats:
+      month_year: "%B %Y"
