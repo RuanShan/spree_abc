@@ -1662,7 +1662,7 @@ click_effect_sider:
   html: ~~content~~
   css: |-
       /* slide_effect:   */
-      .<%= @template.section_selector %> .child_1{   }
+      .<%= @template.section_selector %> .child_1{ cursor: pointer; /* safari required */  }
       .<%= @template.section_selector %> .child_2{ display: none; }
       .sidr {
         /* Default Settings */
@@ -1681,6 +1681,7 @@ click_effect_sider:
         <%= @template.css :sidr %>
       }
       .sidr .sidr_close{
+        cursor: pointer; /* safari required */
         position: absolute;
         top: 0;
         right: 0;
@@ -1689,6 +1690,7 @@ click_effect_sider:
         <%= @template.css :sidr_close %>
       }
       .sidr_overlay{
+        cursor: pointer; /* safari required */
         display: none;
         position: fixed;
         top: 0;
